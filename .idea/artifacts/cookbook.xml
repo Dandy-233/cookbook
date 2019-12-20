@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="cookbook:war exploded">
-    <output-path>$PROJECT_DIR$/out/artifacts/cookbook_war_exploded</output-path>
+  <artifact type="exploded-war" name="cookbook">
+    <output-path>$PROJECT_DIR$/out/artifacts/cookbook</output-path>
     <root id="root">
       <element id="javaee-facet-resources" facet="cookbook/web/Web" />
       <element id="directory" name="WEB-INF">
