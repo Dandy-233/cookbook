@@ -28,10 +28,6 @@ public class DBUtil {
         }
     }
 
-    public static Connection getConnection() throws SQLException {
-        return dataSource.getConnection();
-    }
-
     public static void close(Connection con, Statement stat) {
         if (stat != null) {
             try {

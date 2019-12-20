@@ -11,7 +11,11 @@ json-lib-2.4-jdk15.jar,
 jstl.jar,
 mysql-connector-java-5.1.37-bin.jar,
 standard.jar,
-druid-1.0.9.jar
+druid-1.0.9.jar,
+spring-beans-5.0.0.RELEASE.jar,
+spring-core-5.0.0.RELEASE.jar,
+spring-jdbc-5.0.0.RELEASE.jar,
+spring-tx-5.0.0.RELEASE.jar
 
 # tomcat版本
 9.0.92
