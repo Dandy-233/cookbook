@@ -10,7 +10,8 @@ ezmorph-1.0.6.jar,
 json-lib-2.4-jdk15.jar,
 jstl.jar,
 mysql-connector-java-5.1.37-bin.jar,
-standard.jar
+standard.jar,
+druid-1.0.9.jar
 
 # tomcat版本
 9.0.92

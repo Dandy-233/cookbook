@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>~ o(*￣▽￣*)ブ好看又好吃~菜谱大全(＾Ｕ＾)ノ~ＹＯ</title>
+    <title>~ o(*￣▽￣*)ブ美味又好看~菜谱大全(＾Ｕ＾)ノ~ＹＯ</title>
   </head>
   <body>
   $END$
