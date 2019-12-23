@@ -1,0 +1,23 @@
+.drop-menu {
+    position: relative;
+    display: inline-block;
+}
+.hover-btn {
+    cursor: pointer;
+    transition: 0.5s;
+}
+.drop-content {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    visibility:hidden;
+    opacity: 0;
+    transition: visibility 0s,opacity 0.5s linear;
+}
+.drop-menu:hover .drop-content {
+    display: block;
+    visibility:visible;
+    opacity: 1;
+}
+.drop-menu:hover .hover-btn {
+}

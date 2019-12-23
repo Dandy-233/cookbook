@@ -2,12 +2,15 @@
   <dictionary name="24367">
     <words>
       <w>beanutils</w>
+      <w>drophover</w>
       <w>ezmorph</w>
       <w>jstl</w>
+      <w>navbar</w>
       <w>regi</w>
       <w>regist</w>
       <w>repassword</w>
       <w>succuess</w>
+      <w>toggler</w>
     </words>
   </dictionary>
 </component>

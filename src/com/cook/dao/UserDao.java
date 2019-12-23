@@ -32,4 +32,28 @@ public class UserDao {
         }
         return count;
     }
+
+    public int checkUser(String username) {
+        int count = 0;
+        JdbcTemplate jt = new JdbcTemplate(DBUtil.getDataSource());
+        String sql = "select * from user where username=?";
+        List<User> list = jt.query(sql, new RowMapper<User>() {
+            @Override
+            public User mapRow(ResultSet resultSet, int i) throws SQLException {
+                return new User(resultSet.getInt("user_id"),
+                        resultSet.getString("username"),
+                        resultSet.getString("password"));
+            }
+        },username);
+        if (list.size()>0){
+            count = 1;
+        }
+        return count;
+    }
+
+    public void addUser(String username, String password) {
+        JdbcTemplate jt = new JdbcTemplate(DBUtil.getDataSource());
+        String sql = "insert into user(username,password) values(?,?)";
+        jt.update(sql,username,password);
+    }
 }

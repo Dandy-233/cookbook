@@ -12,4 +12,12 @@ public class UserService {
     public static int getUser(String username, String password) {
         return userDao.getUser(username,password);
     }
+
+    public static int checkUser(String username) {
+        return userDao.checkUser(username);
+    }
+
+    public static void addUser(String username, String password) {
+        userDao.addUser(username,password);
+    }
 }

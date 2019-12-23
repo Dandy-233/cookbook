@@ -15,7 +15,7 @@
 <div class="main">
     <p class="sign" align="center">登录</p>
     <form class="form1" action="${pageContext.request.contextPath}/login" method="post">
-        <input class="un " required type="email" align="center" placeholder="用户名" name="username" id="username">
+        <input class="un " required type="text" align="center" placeholder="用户名" name="username" id="username">
         <input class="pass" required type="password" align="center" placeholder="密码" name="password" id="password">
         <input type="submit" value="登录" class="submit" id="submit">
         <p class="regi" align="center">没有账号？点击<a href="regist.jsp">注册</a></p>
