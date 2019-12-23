@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: 24367
+  User: 李旦
   Date: 2019/12/22
   Time: 14:34
   To change this template use File | Settings | File Templates.
@@ -12,5 +12,6 @@
 </head>
 <body>
 <a href="${pageContext.request.contextPath}/login.jsp">登录</a>
+<a href="${pageContext.request.contextPath}/regist.jsp">注册</a>
 </body>
 </html>
