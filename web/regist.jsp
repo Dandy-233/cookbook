@@ -9,6 +9,8 @@
 <html>
 <head>
     <title>注册\(^o^)/~</title>
+    <link rel="stylesheet" href="static/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="static/stylesheets/drophover.css">
     <link rel="stylesheet" href="static/stylesheets/regist.css">
 </head>
 <body>
@@ -30,8 +32,8 @@
 <script src="static/scripts/bootstrap.bundle.min.js"></script>
 <script src="static/scripts/bootstrap.min.js"></script>
 <script>
-    $("#username").change(function(event){
-        event.preventDefault();
+    //判断用户名是否已被占用
+    $("#username").change(function(){
         var url = "${pageContext.request.contextPath}/checkUser";
         var param = {"username":$("#username").val()};
         $.ajax({
@@ -51,6 +53,7 @@
         });
     });
 
+    //判断密码和确认密码是否一样
     function validate() {
         if ($("#repassword").val() == $("#password").val()){
             $("#error-password").html("<font color='green'>&radic;</font>");
@@ -62,13 +65,18 @@
         }
     }
 
-    $("form").submit(function () {
+    //提交注册信息
+    $("form").submit(function (event) {
+        event.preventDefault();
         var form = $(this);
         $.ajax({
+            url:form.attr("action"),
             type:form.attr("method"),
             data:form.serialize(),
             dataType:"json",
-            success:function (data) {
+            success:function () {
+                alert("注册成功，请登录");
+                window.location.href="login.jsp";
             }
         })
     })

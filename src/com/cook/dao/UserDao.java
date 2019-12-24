@@ -15,8 +15,7 @@ import java.util.List;
  */
 public class UserDao {
 
-    public int getUser(String username, String password) {
-        int count = 0;
+    public User getUser(String username, String password) {
         JdbcTemplate jt = new JdbcTemplate(DBUtil.getDataSource());
         String sql = "select * from user where username=? and password=?";
         List<User> list = jt.query(sql, new RowMapper<User>() {
@@ -28,13 +27,12 @@ public class UserDao {
             }
         },username,password);
         if (list.size()>0){
-            count = 1;
+            return list.get(0);
         }
-        return count;
+        return null;
     }
 
-    public int checkUser(String username) {
-        int count = 0;
+    public User checkUser(String username) {
         JdbcTemplate jt = new JdbcTemplate(DBUtil.getDataSource());
         String sql = "select * from user where username=?";
         List<User> list = jt.query(sql, new RowMapper<User>() {
@@ -46,9 +44,10 @@ public class UserDao {
             }
         },username);
         if (list.size()>0){
-            count = 1;
+            return list.get(0);
+        }else {
+            return null;
         }
-        return count;
     }
 
     public void addUser(String username, String password) {

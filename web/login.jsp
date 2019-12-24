@@ -9,6 +9,8 @@
 <html>
 <head>
     <title>登录(＾－＾)V</title>
+    <link rel="stylesheet" href="static/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="static/stylesheets/drophover.css">
     <link rel="stylesheet" href="static/stylesheets/login.css">
 </head>
 <body>
@@ -24,6 +26,7 @@
 </body>
 <script type="application/javascript" src="static/scripts/jquery-3.4.1.min.js"></script>
 <script type="application/javascript">
+    //用户登录
     $("form").submit(function (event) {
         event.preventDefault();
         var form = $(this);
@@ -37,7 +40,7 @@
                     alert("用户名或密码错误");
                     window.location.href="login.jsp"
                 }else {
-                    window.location.href="index.jsp"
+                    window.location.href="index1.jsp"
                 }
             }
         })

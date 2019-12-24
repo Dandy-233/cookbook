@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * 将注册信息添加到数据库
+ */
 @WebServlet(name = "regist",urlPatterns = "/regist")
 public class RegistController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -17,7 +20,8 @@ public class RegistController extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         UserService.addUser(username,password);
-        response.sendRedirect(request.getContextPath()+"/index.jsp");
+        String result = "{\"count\":\""+1+"\"}";
+        response.getWriter().println(result);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

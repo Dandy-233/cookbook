@@ -1,6 +1,7 @@
 package com.cook.service;
 
 import com.cook.dao.UserDao;
+import com.cook.model.User;
 
 /**
  * @author ¿Óµ©
@@ -9,11 +10,11 @@ import com.cook.dao.UserDao;
 public class UserService {
     private static UserDao userDao = new UserDao();
 
-    public static int getUser(String username, String password) {
+    public static User getUser(String username, String password) {
         return userDao.getUser(username,password);
     }
 
-    public static int checkUser(String username) {
+    public static User checkUser(String username) {
         return userDao.checkUser(username);
     }
 
