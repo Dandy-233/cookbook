@@ -12,6 +12,7 @@ public class User {
     private String gender;
     private String birthday;
     private String note;
+    private String facepath;
 
     public User() {
     }
@@ -76,5 +77,13 @@ public class User {
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+    public String getFacepath() {
+        return facepath;
+    }
+
+    public void setFacepath(String facepath) {
+        this.facepath = facepath;
     }
 }

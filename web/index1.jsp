@@ -54,7 +54,12 @@
             <c:if test="${not empty user}">
                 <li class="nav-item drop-menu">
                     <a class="nav-link hover-btn" tabindex="-1" aria-disabled="true">
-                        <img src="static/images/user.jfif" alt="user" height="30" style="position: relative;border-radius: 50%">
+                        <c:if test="${empty user.facepath}">
+                            <img src="static/images/user.jfif" alt="user" height="30" style="position: relative;border-radius: 50%">
+                        </c:if>
+                        <c:if test="${not empty user.facepath}">
+                            <img src="showImg" alt="user" height="30" style="position: relative;border-radius: 50%">
+                        </c:if>
                     </a>
                     <div class="drop-content bg-light" style="width: 100px">
                         <a class="nav-link" target="_blank" href="ucenter.jsp" style="color: #533f03">个人中心</a>

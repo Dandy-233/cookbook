@@ -6,33 +6,41 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>${user.name}的个人中心</title>
     <link rel="stylesheet" href="static/stylesheets/ucenter.css">
     <link rel="stylesheet" href="static/stylesheets/bootstrap.min.css">
-    <link rel="stylesheet" href="static/layui/css/layui.css">
     <script src="static/scripts/jquery-3.4.1.min.js"></script>
     <script src="static/scripts/bootstrap.bundle.min.js"></script>
     <script src="static/scripts/bootstrap.min.js"></script>
 </head>
 <body style="background-color: #F3EBF6;">
 <div class="container">
-    <div class="container" align="center">
-        <input name="img" id="setface" type="file" accept="image/png,image/jpg" style="display: none">
-        <img title="点击修改头像" id="upimg" class="head" src="static/images/user.jfif" alt="user">
-        <img class="head" id="demo">
-    </div>
-    <%--<br>
-    <div id="confirm-btn" class="confirm-btn">
-        <input id="save-btn" type="button" class="btn-primary btn" value="保存">
-        <input id="cancel-btn" type="button" class="btn-light btn" value="取消">
-    </div>--%>
+    <form id="form2" action="${pageContext.request.contextPath}/upload" method="post" enctype="multipart/form-data">
+        <div class="container" align="center">
+            <input name="img" id="setface" type="file" accept="image/png,image/jpg" style="display: none">
+            <c:if test="${empty user}">
+                <img title="点击修改头像" id="upimg" class="head" src="static/images/user.jfif" alt="user">
+            </c:if>
+            <c:if test="${not empty user}">
+                <img title="点击修改头像" id="upimg" class="head" src="showImg" alt="user">
+            </c:if>
+
+            <img class="head" id="demo"><span id="show"></span>
+        </div>
+        <br>
+        <div id="confirm" style="text-align: center">
+            <input id="save-btn" class="btn btn-primary" type="submit" value="保存">
+            <input id="cancel-btn" class="btn btn-light" type="button" value="取消">
+        </div>
+    </form>
     <br><br>
     <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
             <a style="color: #533f03" class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">个人资料</a>
-            <a style="color: #533f03" class="nav-item nav-link" id="nav-settings-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">我的收藏</a>
+            <a style="color: #533f03" class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">我的收藏</a>
             <a style="color: #533f03" class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">我的菜谱</a>
         </div>
     </nav>
@@ -105,19 +113,15 @@
             <br><br><br><br><br>
         </div>
 
-        <div class="tab-pane fade" id="nav-settings" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
         <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
     </div>
 </div>
 </body>
 <script src="static/laydate/laydate.js"></script>
 <script type="application/javascript">
-    /*$(function () {
-        $("#confirm-btn").css({"display":"none"});
-    });*/
-    $("#upimg").click(function () {
+    $(".head").click(function () {
         $("#setface").click();
-        //$("#confirm-btn").css({"display":"block"});
     });
 
     laydate.render({
@@ -175,33 +179,33 @@
         })
     })
 </script>
-<script src="static/layui/layui.js"></script>
 <script>
     $(function () {
         $("#demo").css({"display":"none"});
+        $("#confirm").css({"display":"none"});
+
+        $("#cancel-btn").click(function () {
+            $("#confirm").css({"display":"none"});
+        });
     });
-
-    layui.use("upload",function () {
-        var $ = layui.jquery;
-        var upload = layui.upload;
-
-        upload.render({
-            elem: "#setface",
-            url:"${pageContext.request.contextPath}/changeFace/post",
-            accept:"images",
-            before:function(obj){
-                obj.preview(function (index,file,result) {
-                    $("#demo").attr('src',result).css({"display":"block"});
-                    $("#upimg").css({"display":"none"})
-                });
-            },
-            done:function () {
-                alert("成功");
-            },
-            error:function () {
-                alert("失败")
-            }
-        })
-    })
+</script>
+<script>
+    $("#setface").on('change',function () {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $("#demo").attr('src',e.target.result).css({"display":"block"});
+            $("#upimg").css({"display":"none"});
+            $("#confirm").css({"display":"block"})
+        };
+        reader.readAsDataURL($(this).get(0).files[0]);
+    });
+</script>
+<script>
+    //判断是否处于登录状态
+    $(function () {
+        <c:if test="${empty user}">
+        window.location.href="index.jsp";
+        </c:if>
+    });
 </script>
 </html>

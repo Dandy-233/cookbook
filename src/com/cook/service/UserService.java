@@ -29,4 +29,8 @@ public class UserService {
     public static User reUser(int id) {
         return userDao.reUser(id);
     }
+
+    public static void setFace(int id, String facepath) {
+        userDao.setFace(id,facepath);
+    }
 }

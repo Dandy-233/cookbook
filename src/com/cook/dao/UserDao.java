@@ -29,6 +29,7 @@ public class UserDao {
                 user.setGender(resultSet.getString("gender"));
                 user.setBirthday(resultSet.getString("birthday"));
                 user.setNote(resultSet.getString("note"));
+                user.setFacepath(resultSet.getString("facepath"));
                 return user;
             }
         },username,password);
@@ -52,6 +53,7 @@ public class UserDao {
                 user.setGender(resultSet.getString("gender"));
                 user.setBirthday(resultSet.getString("birthday"));
                 user.setNote(resultSet.getString("note"));
+                user.setFacepath(resultSet.getString("facepath"));
                 return user;
             }
         },username);
@@ -88,6 +90,7 @@ public class UserDao {
                 user.setGender(resultSet.getString("gender"));
                 user.setBirthday(resultSet.getString("birthday"));
                 user.setNote(resultSet.getString("note"));
+                user.setFacepath(resultSet.getString("facepath"));
                 return user;
             }
         },id);
@@ -96,5 +99,11 @@ public class UserDao {
         }else {
             return null;
         }
+    }
+
+    public void setFace(int id, String facepath) {
+        JdbcTemplate jt = new JdbcTemplate(DBUtil.getDataSource());
+        String sql = "update user set facepath =? where user_id=?";
+        jt.update(sql,facepath,id);
     }
 }
