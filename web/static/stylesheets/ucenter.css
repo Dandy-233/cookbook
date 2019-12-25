@@ -284,3 +284,6 @@
     transform: translate(-50%,-50%);
     background: #00a1d6!important;
 }
+.confirm-btn{
+    text-align: center;
+}

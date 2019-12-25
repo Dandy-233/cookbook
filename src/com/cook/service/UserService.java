@@ -21,4 +21,12 @@ public class UserService {
     public static void addUser(String username, String password) {
         userDao.addUser(username,password);
     }
+
+    public static void setMessage(int id, String name, String note, String gender, String birthday) {
+        userDao.setMessage(id,name,note,gender,birthday);
+    }
+
+    public static User reUser(int id) {
+        return userDao.reUser(id);
+    }
 }

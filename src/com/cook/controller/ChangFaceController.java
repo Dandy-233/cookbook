@@ -20,6 +20,7 @@ import java.io.InputStream;
 @WebServlet(name = "changFace",urlPatterns = "/changFace")
 @MultipartConfig
 public class ChangFaceController extends HttpServlet {
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Part part = request.getPart("img");
         String header = part.getHeader("content-disposition");

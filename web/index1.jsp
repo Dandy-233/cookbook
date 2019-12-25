@@ -92,7 +92,7 @@
             <p>说明文本</p>
             <ul class="nav nav-pills flex-column">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">激活状态</a>
+                    <a class="nav-link active" href="#">链接</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">链接</a>
