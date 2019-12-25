@@ -21,9 +21,15 @@ public class UserDao {
         List<User> list = jt.query(sql, new RowMapper<User>() {
             @Override
             public User mapRow(ResultSet resultSet, int i) throws SQLException {
-                return new User(resultSet.getInt("user_id"),
-                        resultSet.getString("username"),
-                        resultSet.getString("password"));
+                User user = new User();
+                user.setId(resultSet.getInt("user_id"));
+                user.setUsername(resultSet.getString("username"));
+                user.setPassword(resultSet.getString("password"));
+                user.setName(resultSet.getString("name"));
+                user.setGender(resultSet.getString("gender"));
+                user.setBirthday(resultSet.getString("birthday"));
+                user.setNote(resultSet.getString("note"));
+                return user;
             }
         },username,password);
         if (list.size()>0){
@@ -38,9 +44,15 @@ public class UserDao {
         List<User> list = jt.query(sql, new RowMapper<User>() {
             @Override
             public User mapRow(ResultSet resultSet, int i) throws SQLException {
-                return new User(resultSet.getInt("user_id"),
-                        resultSet.getString("username"),
-                        resultSet.getString("password"));
+                User user = new User();
+                user.setId(resultSet.getInt("user_id"));
+                user.setUsername(resultSet.getString("username"));
+                user.setPassword(resultSet.getString("password"));
+                user.setName(resultSet.getString("name"));
+                user.setGender(resultSet.getString("gender"));
+                user.setBirthday(resultSet.getString("birthday"));
+                user.setNote(resultSet.getString("note"));
+                return user;
             }
         },username);
         if (list.size()>0){
@@ -52,7 +64,7 @@ public class UserDao {
 
     public void addUser(String username, String password) {
         JdbcTemplate jt = new JdbcTemplate(DBUtil.getDataSource());
-        String sql = "insert into user(username,password) values(?,?)";
-        jt.update(sql,username,password);
+        String sql = "insert into user(username,password,name) values(?,?,?)";
+        jt.update(sql,username,password,username);
     }
 }

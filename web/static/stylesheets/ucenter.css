@@ -3,3 +3,284 @@
     width: 150px;
     height: 150px;
 }
+.user-setting-warp{
+    font: 12px/1.5 Microsoft YaHei,tahoma,\\5B8B\4F53,sans-serif;
+    color: #717171;
+    font-size: 12px;
+    font-family: MicrosoftYaHei;
+    margin: 0;
+    padding: 20px 20px 0;
+    position: relative;
+}
+.el-form{
+    font: 12px/1.5 Microsoft YaHei,tahoma,\\5B8B\4F53,sans-serif;
+    color: #717171;
+    font-size: 12px;
+    font-family: MicrosoftYaHei;
+    margin: 0;
+    padding: 0;
+}
+.el-form-item{
+    font: 12px/1.5 Microsoft YaHei,tahoma,\\5B8B\4F53,sans-serif;
+    color: #717171;
+    font-size: 12px;
+    font-family: MicrosoftYaHei;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 22px;
+    float: left;
+    width: 789px;
+}
+.el-form-item__label{
+    font: 12px/1.5 Microsoft YaHei,tahoma,\\5B8B\4F53,sans-serif;
+    font-family: MicrosoftYaHei;
+    vertical-align: middle;
+    font-size: 14px;
+    color: #48576a;
+    box-sizing: border-box;
+    width: 95px;
+    text-align: right;
+    margin-right: 20px;
+    float: left;
+    line-height: 30px;
+    padding: 0;
+}
+.el-form-item__content{
+    font: 12px/1.5 Microsoft YaHei,tahoma,\\5B8B\4F53,sans-serif;
+    color: #717171;
+    font-family: MicrosoftYaHei;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    font-size: 14px;
+    line-height: 30px;
+}
+.el-input{
+    font: 12px/1.5 Microsoft YaHei,tahoma,\\5B8B\4F53,sans-serif;
+    color: #717171;
+    font-family: MicrosoftYaHei;
+    line-height: 30px;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    position: relative;
+    font-size: 14px;
+    float: left;
+    width: 225px;
+    height: 30px;
+    margin-right: 40px;
+}
+.el-input__inner{
+    margin: 0;
+    font-family: inherit;
+    font-weight: inherit;
+    display: inline-block;
+    -webkit-appearance: none;
+    background-color: #fff;
+    background-image: none;
+    border-radius: 4px;
+    border: 1px solid #bfcbd9;
+    box-sizing: border-box;
+    color: #1f2d3d;
+    font-size: inherit;
+    line-height: 1;
+    outline: 0;
+    padding: 3px 10px;
+    transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+    float: left;
+    width: 225px;
+    height: 30px;
+    margin-right: 40px;
+}
+.nick-name-not{
+    font: 12px/1.5 Microsoft YaHei,tahoma,\\5B8B\4F53,sans-serif;
+    font-family: MicrosoftYaHei;
+    font-size: 14px;
+    line-height: 30px;
+    color: #aaa;
+}
+.userinfo-username{
+    font: 12px/1.5 Microsoft YaHei,tahoma,\\5B8B\4F53,sans-serif;
+    font-family: MicrosoftYaHei;
+    line-height: 30px;
+    font-size: 14px;
+    color: #898989;
+}
+.el-textarea{
+    font: 12px/1.5 Microsoft YaHei,tahoma,\\5B8B\4F53,sans-serif;
+    color: #717171;
+    font-family: MicrosoftYaHei;
+    font-size: 14px;
+    line-height: 30px;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    vertical-align: bottom;
+    float: left;
+    width: 618px;
+    height: 88px;
+    resize: none;
+}
+.el-textarea__inner{
+    margin: 0;
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: 14px;
+    box-sizing: border-box;
+    display: block;
+    padding: 5px 7px;
+    line-height: 1.5;
+    color: #1f2d3d;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #bfcbd9;
+    border-radius: 4px;
+    transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+    float: left;
+    width: 618px;
+    height: 88px;
+    resize: none;
+}
+.el-radio-group{
+    font: 12px/1.5 Microsoft YaHei,tahoma,\\5B8B\4F53,sans-serif;
+    color: #717171;
+    font-family: MicrosoftYaHei;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    vertical-align: middle;
+    display: inline-block;
+    font-size: 0;
+}
+.el-radio-button{
+    font: 12px/1.5 Microsoft YaHei,tahoma,\\5B8B\4F53,sans-serif;
+    color: #717171;
+    font-family: MicrosoftYaHei;
+    line-height: 1;
+    font-size: 0;
+    position: relative;
+    display: inline-block;
+}
+.el-radio-button__orig-radio{
+    margin: 0;
+    padding: 0;
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: 100%;
+    opacity: 0;
+    outline: 0;
+    position: absolute;
+    z-index: -1;
+    left: -999px;
+
+}
+.el-radio-button__inner{
+    font: 12px/1.5 Microsoft YaHei,tahoma,\\5B8B\4F53,sans-serif;
+    font-family: MicrosoftYaHei;
+    line-height: 1;
+    vertical-align: middle;
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+    -webkit-appearance: none;
+    text-align: center;
+    box-sizing: border-box;
+    outline: 0;
+    margin: 0;
+    cursor: pointer;
+    transition: all .3s cubic-bezier(.645,.045,.355,1);
+    font-size: 14px;
+    margin-right: 20px;
+    padding: 5px 8px;
+    border: 1px solid #bfcbd9;
+    border-radius: 5px!important;
+    background: #f4f4f4;
+    border-left: 1px solid #bfcbd9;
+    box-shadow: none!important;
+    /*color: #fff;
+    background-color: #22a1d6!important;
+    border-color: #22a1d6!important;*/
+}
+.el-input__icon{
+    font: 12px/1.5 Microsoft YaHei,tahoma,\\5B8B\4F53,sans-serif;
+    font-size: 14px;
+    font-family: element-icons!important;
+    speak: none;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    vertical-align: baseline;
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+    position: absolute;
+    width: 35px;
+    height: 100%;
+    right: 0;
+    top: 0;
+    text-align: center;
+    color: #bfcbd9;
+    transition: all .3s;
+}
+.el-date-editor{
+    font: 12px/1.5 Microsoft YaHei,tahoma,\\5B8B\4F53,sans-serif;
+    color: #717171;
+    font-family: MicrosoftYaHei;
+    line-height: 30px;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    position: relative;
+    font-size: 14px;
+    width: 193px;
+}
+.padding-dom{
+    font: 12px/1.5 Microsoft YaHei,tahoma,\\5B8B\4F53,sans-serif;
+    color: #717171;
+    font-family: MicrosoftYaHei;
+    font-size: 14px;
+    line-height: 30px;
+    margin: 0;
+    padding: 0;
+    width: 789px;
+    height: 39px;
+    border-bottom: 1px solid #e5e9ef;
+    margin-bottom: 40px;
+}
+.user-my-btn-warp{
+    font: 12px/1.5 Microsoft YaHei,tahoma,\\5B8B\4F53,sans-serif;
+    color: #717171;
+    font-family: MicrosoftYaHei;
+    font-size: 14px;
+    line-height: 30px;
+    margin: 0;
+    padding: 0;
+    float: left;
+    width: 789px;
+    height: 36px;
+    position: relative;
+}
+.el-button{
+    -webkit-appearance: none;
+    outline: 0;
+    text-align: center;
+    font-size: 14px;
+    box-sizing: border-box;
+    display: inline-block;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    border: 1px solid #c4c4c4;
+    margin: 0;
+    padding: 10px 15px;
+    border-radius: 4px;
+    color: #fff;
+    border-color: #20a0ff;
+    width: 110px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: #00a1d6!important;
+}
