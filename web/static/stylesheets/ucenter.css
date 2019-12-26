@@ -2,6 +2,7 @@
     border-radius: 50%;
     width: 150px;
     height: 150px;
+    cursor: pointer;
 }
 .user-setting-warp{
     font: 12px/1.5 Microsoft YaHei,tahoma,\\5B8B\4F53,sans-serif;

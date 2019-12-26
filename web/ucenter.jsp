@@ -10,6 +10,7 @@
 <html>
 <head>
     <title>${user.name}的个人中心</title>
+    <link rel="stylesheet" href="static/stylesheets/drophover.css">
     <link rel="stylesheet" href="static/stylesheets/ucenter.css">
     <link rel="stylesheet" href="static/stylesheets/bootstrap.min.css">
     <script src="static/scripts/jquery-3.4.1.min.js"></script>
@@ -17,18 +18,87 @@
     <script src="static/scripts/bootstrap.min.js"></script>
 </head>
 <body style="background-color: #F3EBF6;">
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="index1.jsp" title="╰(￣▽￣)╭">(๑•̀ㅂ•́)و✧</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="index1.jsp">首页 <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">排行</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    分类
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">食材</a>
+                    <a class="dropdown-item" href="#">口味</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">菜品</a>
+                </div>
+            </li>
+            <li class="nav-item drop-menu">
+                <a class="nav-link hover-btn" tabindex="-1" aria-disabled="true">
+                    <img src="static/images/phone.png" alt="phone" height="20">
+                    下载app
+                </a>
+                <div class="drop-content">
+                    <img src="static/images/22.png" alt="二维码" width="150" height="150">
+                </div>
+            </li>
+            <c:if test="${not empty user}">
+                <li class="nav-item drop-menu">
+                    <a class="nav-link hover-btn" tabindex="-1" aria-disabled="true">
+                        <c:if test="${empty user.facepath}">
+                            <img src="static/images/user.jfif" alt="user" height="30" style="position: relative;border-radius: 50%">
+                        </c:if>
+                        <c:if test="${not empty user.facepath}">
+                            <img src="showImg" alt="user" height="30" style="position: relative;border-radius: 50%">
+                        </c:if>
+                    </a>
+                    <div class="drop-content bg-light" style="width: 100px">
+                        <a class="nav-link" target="_blank" href="ucenter.jsp" style="color: #533f03">个人中心</a>
+                        <a class="nav-link" target="_blank" href="mymenus.jsp" style="color: #533f03">我的菜谱</a>
+                        <a class="nav-link" target="_blank" href="mycollect.jsp" style="color: #533f03">我的收藏</a>
+                        <div style="height: 1px"><hr color="orange"></div>
+                        <a class="nav-link" href="exit" style="color: gray">退出登录</a>
+                    </div>
+                </li>
+            </c:if>
+            <c:if test="${empty user}">
+                <li class="nav-item">
+                    <a class="nav-link" href="login.jsp">登录</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="regist.jsp">注册</a>
+                </li>
+            </c:if>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="你想要的都在这里..." aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
+        </form>
+    </div>
+</nav>
+
 <div class="container">
+    <br>
     <form id="form2" action="${pageContext.request.contextPath}/upload" method="post" enctype="multipart/form-data">
         <div class="container" align="center">
             <input name="img" id="setface" type="file" accept="image/png,image/jpg" style="display: none">
             <c:if test="${empty user}">
-                <img title="点击修改头像" id="upimg" class="head" src="static/images/user.jfif" alt="user">
+                <img title="点击修改头像" style="cursor: pointer" id="upimg" class="head" src="static/images/user.jfif" alt="user">
             </c:if>
             <c:if test="${not empty user}">
-                <img title="点击修改头像" id="upimg" class="head" src="showImg" alt="user">
+                <img title="点击修改头像" style="cursor: pointer" id="upimg" class="head" src="showImg" alt="user">
             </c:if>
-
-            <img class="head" id="demo"><span id="show"></span>
+            <img class="head" style="cursor: pointer" id="demo">
         </div>
         <br>
         <div id="confirm" style="text-align: center">
@@ -36,12 +106,12 @@
             <input id="cancel-btn" class="btn btn-light" type="button" value="取消">
         </div>
     </form>
-    <br><br>
+    <br>
     <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
             <a style="color: #533f03" class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">个人资料</a>
-            <a style="color: #533f03" class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">我的收藏</a>
-            <a style="color: #533f03" class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">我的菜谱</a>
+            <a style="color: #533f03" class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">修改密码</a>
+            <a style="color: #533f03" class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">美食家中心</a>
         </div>
     </nav>
     <div class="tab-content" id="nav-tabContent">
@@ -113,8 +183,43 @@
             <br><br><br><br><br>
         </div>
 
-        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
-        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <div style="background-color: white;padding: 50px 200px;">
+                <form id="form3" action="changePassword" method="post">
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">请输入旧密码</label>
+                        <input type="password" name="oldpassword" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword2">请输入新密码</label>
+                        <input type="password" name="newpassword" class="form-control" id="exampleInputPassword2">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword3">请再次输入新密码</label>
+                        <input type="password" name="re-newpassword" class="form-control" id="exampleInputPassword3">
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary">提交</button>
+                </form>
+            </div>
+            <br><br><br><br><br>
+        </div>
+
+        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+            <div style="background-color: white;padding: 50px 200px">
+                <div align="center">
+                    <img src="static/images/jojo.jfif" alt="jojo" width="70%">
+                </div>
+                <br><br>
+                <div align="center">
+                    <span style="font-family: 黑体;color: #007bff">还在犹豫什么，快加入我们</span><br><br>
+                    <a href="newcook.jsp" target="_blank">
+                        <input type="button" class="btn btn-success" value="成为美食巨星吧">
+                    </a>
+                </div>
+            </div>
+            <br><br><br><br><br>
+        </div>
     </div>
 </div>
 </body>
@@ -162,22 +267,25 @@
     });
 </script>
 <script>
-    $("#form1").submit(function (event) {
-        event.preventDefault();
-        var form = $(this);
-        $.ajax({
-            type:form.attr("method"),
-            url:form.attr("action"),
-            data:form.serialize(),
-            success:function () {
-                alert("修改成功");
-                window.location.href="ucenter.jsp"
-            },
-            error:function () {
-              window.location.href="index.jsp";
-            }
+    $(function () {
+        $("#form1").submit(function (event) {
+            event.preventDefault();
+            var form = $(this);
+            $.ajax({
+                type:form.attr("method"),
+                url:form.attr("action"),
+                data:form.serialize(),
+                success:function () {
+                    alert("修改成功");
+                    window.location.href="ucenter.jsp"
+                },
+                error:function () {
+                    window.location.href="index.jsp";
+                }
+            })
         })
     })
+
 </script>
 <script>
     $(function () {
@@ -186,10 +294,12 @@
 
         $("#cancel-btn").click(function () {
             $("#confirm").css({"display":"none"});
+            window.location.href="ucenter.jsp"
         });
     });
 </script>
 <script>
+    //预览图片
     $("#setface").on('change',function () {
         var reader = new FileReader();
         reader.onload = function (e) {
@@ -207,5 +317,41 @@
         window.location.href="index.jsp";
         </c:if>
     });
+</script>
+<script>
+    $(function () {
+        $("#form3").submit(function (e) {
+            e.preventDefault();
+            if (!($("#exampleInputPassword2").val() == ($("#exampleInputPassword3").val()))){
+                alert("两次输入密码不一致");
+                window.location.href="ucenter.jsp";
+            }else {
+                var form = $(this);
+                $.ajax({
+                    type:form.attr("method"),
+                    url:form.attr("action"),
+                    data:form.serialize(),
+                    dataType:"json",
+                    success:function (d) {
+                        if (d.code == 0){
+                            alert("旧密码输入有误");
+                            window.location.href="ucenter.jsp";
+                        }
+                        if (d.code == 1){
+                            alert("请不要输入相同的密码");
+                            window.location.href="ucenter.jsp";
+                        }
+                        if (d.code == 2){
+                            alert("修改密码成功,请重新登录");
+                            window.location.href="index1.jsp";
+                        }
+                    },
+                    error:function () {
+                        alert("错误")
+                    }
+                })
+            }
+        })
+    })
 </script>
 </html>

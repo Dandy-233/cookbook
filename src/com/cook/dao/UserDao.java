@@ -106,4 +106,10 @@ public class UserDao {
         String sql = "update user set facepath =? where user_id=?";
         jt.update(sql,facepath,id);
     }
+
+    public void setPassword(int id, String newPassword) {
+        JdbcTemplate jt = new JdbcTemplate(DBUtil.getDataSource());
+        String sql = "update user set password=? where user_id=?";
+        jt.update(sql,newPassword,id);
+    }
 }

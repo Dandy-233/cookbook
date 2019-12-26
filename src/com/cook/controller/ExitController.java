@@ -20,6 +20,7 @@ public class ExitController extends HttpServlet {
         for (Cookie cookie:cookies){
             cookie.setMaxAge(0);
             response.addCookie(cookie);
+
         }
         response.sendRedirect(request.getContextPath()+"/index.jsp");
     }

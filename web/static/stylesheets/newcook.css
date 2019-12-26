@@ -1,0 +1,15 @@
+.content-area{
+    background-color: white;
+    padding: 50px 200px;
+}
+.content-title{
+    text-align: center;
+    color: chocolate;
+    font-size: x-large;
+    font-family: Ώ¬Με;
+}
+.form-img{
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+}

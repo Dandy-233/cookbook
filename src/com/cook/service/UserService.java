@@ -33,4 +33,8 @@ public class UserService {
     public static void setFace(int id, String facepath) {
         userDao.setFace(id,facepath);
     }
+
+    public static void setPassword(int id, String newPassword) {
+        userDao.setPassword(id,newPassword);
+    }
 }
