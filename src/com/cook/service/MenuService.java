@@ -32,4 +32,8 @@ public class MenuService {
     public static void deleteMenu(int menuid) {
         menuDao.deleteMenu(menuid);
     }
+
+    public static List<Menu> checkAllMenu() {
+        return menuDao.checkAllMenu();
+    }
 }

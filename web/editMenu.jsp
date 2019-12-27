@@ -30,11 +30,11 @@
 </c:import>
 <div class="container">
     <form id="form-cook" action="${pageContext.request.contextPath}/editCook" method="post" enctype="multipart/form-data">
-        <input type="text" value="<%=menu.getId()%>" name="menuid" id="menuid" style="display: none">
+        <input accept="imageimage/jpeg,image/png" type="text" value="<%=menu.getId()%>" name="menuid" id="menuid" style="display: none">
         <div class="form-group content-area">
             <hr style="color: chocolate">
             <div class="form-group" align="center">
-                <input required type="file" name="upimg" id="upimg" style="display: none">
+                <input accept="image/png,image/jpeg" required type="file" name="upimg" id="upimg" style="display: none">
                 <img id="img-btn" title="点击更改图片"  class="form-img" src="showCookImg?index=<%=index%>" alt="edit">
                 <img class="form-img" id="demo">
             </div>
@@ -72,35 +72,48 @@
         $("#form-cook").submit(function (e) {
             e.preventDefault();
             var data = new FormData();
-            data.append("upimg",$("#upimg")[0].files[0]);
+            var fileinput = $("#upimg")[0].files[0];
+            data.append("upimg",fileinput);
             var form = $(this);
             $.ajax({
-                url:form.attr("action"),
-                type:form.attr("method"),
-                data:form.serialize(),
-                dataType:"json",
-                success:function (d) {
-                    if (d.code == 1){
-                        if ($("#upimg").val()==null){
-                            alert("保存成功");
-                            window.location.href="mymenusTransition.jsp";
-                        }else {
-                            $.ajax({
-                                url:"${pageContext.request.contextPath}/setImg",
-                                type:"post",
-                                data:data,
-                                contentType:false,
-                                processData: false,
-                                success:function () {
-                                    alert("保存成功");
-                                    window.location.href="mymenusTransition.jsp"
-                                }
-                            });
+                url:"${pageContext.request.contextPath}/setImg",
+                type:"post",
+                data:data,
+                contentType:false,
+                processData: false,
+                success:function () {
+                    $.ajax({
+                        url:form.attr("action"),
+                        type:form.attr("method"),
+                        data:form.serialize(),
+                        dataType:"json",
+                        success:function (d) {
+                            if (d.code == 1){
+                                alert("保存成功");
+                                window.location.href="mymenusTransition.jsp";
+                            }
+                        },
+                        error:function () {
+                            alert("错误")
                         }
-                    }
+                    });
                 },
                 error:function () {
-                    alert("错误")
+                    $.ajax({
+                        url:form.attr("action"),
+                        type:form.attr("method"),
+                        data:form.serialize(),
+                        dataType:"json",
+                        success:function (d) {
+                            if (d.code == 1){
+                                alert("保存成功");
+                                window.location.href="mymenusTransition.jsp";
+                            }
+                        },
+                        error:function () {
+                            alert("错误")
+                        }
+                    });
                 }
             });
         })

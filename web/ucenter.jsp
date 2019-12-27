@@ -26,7 +26,7 @@
     <br>
     <form id="form2" action="${pageContext.request.contextPath}/upload" method="post" enctype="multipart/form-data">
         <div class="container" align="center">
-            <input name="img" id="setface" type="file" accept="image/png,image/jpg" style="display: none">
+            <input name="img" id="setface" type="file" accept="image/png,image/jpeg" style="display: none">
             <c:if test="${empty user}">
                 <img title="点击修改头像" style="cursor: pointer" id="upimg" class="head" src="static/images/user.jfif" alt="user">
             </c:if>

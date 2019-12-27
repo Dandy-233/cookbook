@@ -43,7 +43,7 @@
                 </div>
                 <br>
                 <div class="form-group" align="center">
-                    <input required type="file" name="upimg" id="upimg" style="display: none">
+                    <input accept="image/png,image/jpeg" required type="file" name="upimg" id="upimg" style="display: none">
                     <p style="color: #533f03">点击以下区域上传图片作为封面</p>
                     <img id="img-btn" title="点击上传图片"  class="form-img" src="static/images/add.png" alt="add">
                     <img class="form-img" id="demo">

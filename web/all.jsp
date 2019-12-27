@@ -20,6 +20,27 @@
 <c:import url="top.jsp">
 
 </c:import>
+<div>
+    <h1 style="text-align: center;color: darkorange">所有菜谱</h1><br><br>
+    <div align="center">
+        <ul class="list-group list-group-flush">
+            <c:forEach var="menu" items="${menus}" varStatus="status">
+                <hr>
+                <li class="list-group-item" title="点击查看详情">
+                    <a href="editMenu.jsp?index=${status.index}" target="_blank" style="text-decoration: none">
+                        <div style="background-color:#e5e9ef ">
+                            <img width="100px" height="100px" src="showCookImg?index=${status.index}" alt="封面">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <span style="font-size: large;color: #5FB878">${menu.title}</span>
+                        </div>
+                    </a>
+                </li>
+                <hr>
+            </c:forEach>
+        </ul>
+    </div>
+</div>
+
 <c:import url="bottom.jsp">
 
 </c:import>

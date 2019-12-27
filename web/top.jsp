@@ -39,7 +39,7 @@
                     <a class="dropdown-item" href="material.jsp">食材</a>
                     <a class="dropdown-item" href="taste.jsp">口味</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="all.jsp">所有</a>
+                    <a class="dropdown-item" href="allTransition.jsp">所有</a>
                 </div>
             </li>
             <li class="nav-item drop-menu">

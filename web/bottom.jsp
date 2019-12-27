@@ -17,8 +17,8 @@
     <script src="static/scripts/bootstrap.min.js"></script>
 </head>
 <body>
-<div class="jumbotron text-center bg-dark" style="margin-bottom:0;height: 0;">
-    <p style="color: #e5e9ef">底部内容</p>
+<div class="jumbotron text-center bg-dark" style="margin-bottom:0;height:0;">
+    <p style="color: #e5e9ef">联系我们：123456 商务邮箱：666666@cook.com</p>
 </div>
 </body>
 </html>

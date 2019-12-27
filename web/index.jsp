@@ -9,7 +9,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>~ o(*￣▽￣*)ブ美味又好看~菜谱大全(＾Ｕ＾)ノ~ＹＯ</title>
+    <title>~ o(*￣▽￣*)ブ鲜香美味~菜谱大全(＾Ｕ＾)ノ~ＹＯ</title>
     <link rel="stylesheet" href="static/stylesheets/style.css">
     <link rel="stylesheet" href="static/stylesheets/drophover.css">
     <link rel="stylesheet" href="static/stylesheets/bootstrap.min.css">

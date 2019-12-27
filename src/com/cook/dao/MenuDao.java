@@ -64,4 +64,23 @@ public class MenuDao {
         String sql = "delete from menu where menu_id=?";
         jt.update(sql,menuid);
     }
+
+    public List<Menu> checkAllMenu() {
+        JdbcTemplate jt = new JdbcTemplate(DBUtil.getDataSource());
+        String sql = "select * from menu";
+        List<Menu> list = jt.query(sql, new RowMapper<Menu>() {
+            @Override
+            public Menu mapRow(ResultSet resultSet, int i) throws SQLException {
+                Menu menu = new Menu();
+                menu.setId(resultSet.getInt("menu_id"));
+                menu.setTitle(resultSet.getString("title"));
+                menu.setMaterial(resultSet.getString("material"));
+                menu.setDescription(resultSet.getString("description"));
+                menu.setImg(resultSet.getString("img"));
+                menu.setAuthor(resultSet.getInt("author_id"));
+                return menu;
+            }
+        });
+        return list;
+    }
 }

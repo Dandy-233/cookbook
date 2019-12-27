@@ -22,7 +22,7 @@
 </c:import>
 
 <br><br>
-<h2 style="text-align: center;color: darkorange">我的菜谱</h2><br><br><br>
+<h1 style="text-align: center;color: darkorange">我的菜谱</h1><br><br>
 <div class="container" style="background-color: white;padding: 50px 200px">
     <c:if test="${empty menus}">
         <div align="center">
@@ -52,6 +52,11 @@
             </ul>
         </div>
     </c:if>
+    <div style="text-align: center">
+        <a href="newcook.jsp">
+            <input type="button" class="btn btn-success" value="上传菜谱">
+        </a>
+    </div>
 </div>
 <c:import url="bottom.jsp">
 
