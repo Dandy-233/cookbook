@@ -3,6 +3,8 @@ package com.cook.service;
 import com.cook.dao.MenuDao;
 import com.cook.model.Menu;
 
+import java.util.List;
+
 /**
  * @author 24367
  * @date 2019/12/26,16:25
@@ -18,7 +20,16 @@ public class MenuService {
         menuDao.setImg(img,id);
     }
 
-    public static Menu getMenu(int id) {
-        return menuDao.getMenu(id);
+
+    public static List<Menu> listMenu(int authorid) {
+        return menuDao.listMenu(authorid);
+    }
+
+    public static void editMenu(int menuid, String title, String material, String description) {
+        menuDao.editMenu(menuid,title,material,description);
+    }
+
+    public static void deleteMenu(int menuid) {
+        menuDao.deleteMenu(menuid);
     }
 }

@@ -1,7 +1,6 @@
 package com.cook.controller;
 
-import com.cook.model.User;
-import com.cook.service.UserService;
+import com.cook.service.MenuService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,20 +10,19 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(name = "setMessage",urlPatterns = "/setMessage")
-public class SetMessageController extends HttpServlet {
+@WebServlet(name = "editCook",urlPatterns = "/editCook")
+public class EditCookController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
-        int id = ((User)request.getSession().getAttribute("user")).getId();
-        String name = request.getParameter("name");
-        String note = request.getParameter("note");
-        String gender = request.getParameter("gender");
-        String birthday = request.getParameter("birthday");
-        UserService.setMessage(id,name,note,gender,birthday);
-        User user = UserService.reUser(id);
+        int menuid = Integer.parseInt(request.getParameter("menuid"));
+        String title = request.getParameter("title");
+        String material = request.getParameter("material");
+        String description = request.getParameter("description");
+        MenuService.editMenu(menuid,title,material,description);
         HttpSession session = request.getSession();
-        session.setAttribute("user",user);
+        session.setAttribute("menuid",menuid);
+        response.getWriter().println("{\"code\":\"1\"}");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -1,15 +1,16 @@
-<%--
+<%@ page import="com.cook.model.Menu" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: 李旦
-  Date: 2019/12/26
-  Time: 14:01
+  Date: 2019/12/27
+  Time: 10:52
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>添加美食</title>
+    <title>菜谱详情</title>
     <link rel="stylesheet" href="static/stylesheets/drophover.css">
     <link rel="stylesheet" href="static/stylesheets/newcook.css">
     <link rel="stylesheet" href="static/stylesheets/bootstrap.min.css">
@@ -18,6 +19,12 @@
     <script src="static/scripts/bootstrap.min.js"></script>
 </head>
 <body style="background-color: #F3EBF6">
+<%
+    HttpSession session1 = request.getSession();
+    List<Menu> list = (List<Menu>) session1.getAttribute("menus");
+    int index = Integer.parseInt(request.getParameter("index"));;
+    Menu menu = list.get(index);
+%>
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="index1.jsp" title="╰(￣▽￣)╭">(๑•̀ㅂ•́)و✧</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -88,38 +95,34 @@
 </nav>
 
 <div class="container">
-    <div>
-        <img src="static/images/newcook-banner.jpg" width="100%" alt="">
-    </div>
-    <div class="container">
-        <form id="form-cook" action="${pageContext.request.contextPath}/addCook" method="post" enctype="multipart/form-data">
-            <div class="form-group content-area">
-                <p class="content-title">上传你的美食</p><br>
-                <div class="form-group">
-                    <input required id="title" name="title" type="text" class="form-control" placeholder="描述一下你的美食吧(o゜▽゜)o☆">
-                </div>
-                <br>
-                <div class="form-group">
-                    <textarea id="material" name="material" type="text" class="form-control" placeholder="用了哪些食材の很重要喔"></textarea>
-                </div>
-                <br>
-                <div class="form-group">
-                    <textarea required id="description" name="description" type="text" rows="8" class="form-control" placeholder="告诉我它的做法吧~~\(^o^)/~"></textarea>
-                </div>
-                <br>
-                <div class="form-group" align="center">
-                    <input required type="file" name="upimg" id="upimg" style="display: none">
-                    <p style="color: #533f03">点击以下区域上传图片作为封面</p>
-                    <img id="img-btn" title="点击上传图片"  class="form-img" src="static/images/add.png" alt="add">
-                    <img class="form-img" id="demo">
-                </div>
-                <hr style="color: chocolate">
-                <div align="center">
-                    <button id="btn-up" type="submit" class="btn btn-info btn-lg">上传</button>
-                </div>
+    <form id="form-cook" action="${pageContext.request.contextPath}/editCook" method="post" enctype="multipart/form-data">
+        <input type="text" value="<%=menu.getId()%>" name="menuid" id="menuid" style="display: none">
+        <div class="form-group content-area">
+            <hr style="color: chocolate">
+            <div class="form-group" align="center">
+                <input required type="file" name="upimg" id="upimg" style="display: none">
+                <img id="img-btn" title="点击更改图片"  class="form-img" src="showCookImg?index=<%=index%>" alt="edit">
+                <img class="form-img" id="demo">
             </div>
-        </form>
-    </div>
+            <div class="form-group">
+                <input value="<%=menu.getTitle()%>" required id="title" name="title" type="text" class="form-control" placeholder="描述一下你的美食吧(o゜▽゜)o☆">
+            </div>
+            <br>
+            <div class="form-group">
+                <textarea id="material" name="material" type="text" class="form-control" placeholder="用了哪些食材の很重要喔"><%=menu.getMaterial()%></textarea>
+            </div>
+            <br>
+            <div class="form-group">
+                <textarea required id="description" name="description" type="text" rows="8" class="form-control" placeholder="告诉我它的做法吧~~\(^o^)/~"><%=menu.getDescription()%></textarea>
+            </div>
+            <br>
+            <hr style="color: chocolate">
+            <div align="center">
+                <button id="btn-up" type="submit" class="btn btn-info btn-lg">保存</button>
+                <button id="menu-delete" type="button" class="btn btn-danger btn-lg">删除</button>
+            </div>
+        </div>
+    </form>
 </div>
 </body>
 <script>
@@ -141,17 +144,22 @@
                 dataType:"json",
                 success:function (d) {
                     if (d.code == 1){
-                        $.ajax({
-                            url:"${pageContext.request.contextPath}/setImg",
-                            type:"post",
-                            data:data,
-                            contentType:false,
-                            processData: false,
-                            success:function () {
-                                alert("上传成功");
-                                window.location.href="mymenusTransition.jsp"
-                            }
-                        })
+                        if ($("#upimg").val()==null){
+                            alert("保存成功");
+                            window.location.href="mymenusTransition.jsp";
+                        }else {
+                            $.ajax({
+                                url:"${pageContext.request.contextPath}/setImg",
+                                type:"post",
+                                data:data,
+                                contentType:false,
+                                processData: false,
+                                success:function () {
+                                    alert("保存成功");
+                                    window.location.href="mymenusTransition.jsp"
+                                }
+                            });
+                        }
                     }
                 },
                 error:function () {
@@ -184,6 +192,21 @@
         <c:if test="${empty user}">
         window.location.href="index.jsp";
         </c:if>
+    });
+</script>
+<script>
+    $("#menu-delete").click(function () {
+        if (confirm("确认要删除吗")){
+            var url = "${pageContext.request.contextPath}/deleteMenu";
+            var param = {"menuid":$("#menuid").val()};
+            $.ajax({
+                url:url,
+                data:param,
+                success:function () {
+                    window.location.href="mymenusTransition.jsp";
+                }
+            });
+        }
     });
 </script>
 </html>

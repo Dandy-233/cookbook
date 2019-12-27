@@ -34,9 +34,9 @@ public class MenuDao {
         jt.update(sql,img,id);
     }
 
-    public Menu getMenu(int id) {
+    public List<Menu> listMenu(int authorid) {
         JdbcTemplate jt = new JdbcTemplate(DBUtil.getDataSource());
-        String sql = "select * from menu where menu_id=?";
+        String sql = "select * from menu where author_id=?";
         List<Menu> list = jt.query(sql, new RowMapper<Menu>() {
             @Override
             public Menu mapRow(ResultSet resultSet, int i) throws SQLException {
@@ -49,11 +49,19 @@ public class MenuDao {
                 menu.setAuthor(resultSet.getInt("author_id"));
                 return menu;
             }
-        }, id);
-        if (list.size()>0){
-            return list.get(0);
-        }else {
-            return null;
-        }
+        }, authorid);
+        return list;
+    }
+
+    public void editMenu(int menuid, String title, String material, String description) {
+        JdbcTemplate jt = new JdbcTemplate(DBUtil.getDataSource());
+        String sql = "update menu set title=?,material=?,description=? where menu_id=?";
+        jt.update(sql,title,material,description,menuid);
+    }
+
+    public void deleteMenu(int menuid) {
+        JdbcTemplate jt = new JdbcTemplate(DBUtil.getDataSource());
+        String sql = "delete from menu where menu_id=?";
+        jt.update(sql,menuid);
     }
 }

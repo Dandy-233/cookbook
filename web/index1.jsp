@@ -29,17 +29,17 @@
                 <a class="nav-link" href="index1.jsp">首页 <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">排行</a>
+                <a class="nav-link" href="leaderboard.jsp">排行</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     分类
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">食材</a>
-                    <a class="dropdown-item" href="#">口味</a>
+                    <a class="dropdown-item" href="material.jsp">食材</a>
+                    <a class="dropdown-item" href="taste.jsp">口味</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">菜品</a>
+                    <a class="dropdown-item" href="all.jsp">所有</a>
                 </div>
             </li>
             <li class="nav-item drop-menu">
@@ -63,7 +63,7 @@
                     </a>
                     <div class="drop-content bg-light" style="width: 100px">
                         <a class="nav-link" target="_blank" href="ucenter.jsp" style="color: #533f03">个人中心</a>
-                        <a class="nav-link" target="_blank" href="mymenus.jsp" style="color: #533f03">我的菜谱</a>
+                        <a class="nav-link" target="_blank" href="mymenusTransition.jsp" style="color: #533f03">我的菜谱</a>
                         <a class="nav-link" target="_blank" href="mycollect.jsp" style="color: #533f03">我的收藏</a>
                         <div style="height: 1px"><hr color="orange"></div>
                         <a class="nav-link" href="exit" style="color: gray">退出登录</a>
@@ -88,47 +88,43 @@
 
 <div class="container" style="margin-top:30px">
     <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-4" style="position: fixed">
             <h2 style="font-family: 楷体">美食の物语</h2>
             <img src="static/images/logo.png" alt="美食の物语" width="200">
-            <%--            <div class="fakeimg">这边插入图像</div>--%>
-            <p style="font-family: 楷体">专为打造最好的美食</p>
-            <h3>一些链接</h3>
-            <p>说明文本</p>
-            <ul class="nav nav-pills flex-column">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">链接</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">链接</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">链接</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">禁用</a>
-                </li>
-            </ul>
+            <p style="font-family: 楷体">大家最爱的美食社区</p>
             <hr class="d-sm-none">
         </div>
-        <div class="col-sm-8">
-            <h2>标题</h2>
-            <h5>副标题</h5>
-            <div class="fakeimg">图像</div>
-            <p>一些文本..</p>
-            <p>内容</p>
-            <br>
-            <h2>标题</h2>
-            <h5>副标题</h5>
-            <div class="fakeimg">图像</div>
-            <p>一些文本..</p>
-            <p>内容</p>
+        <div align="center" style="margin-left: 450px; background-color: #e5e9ef;width: 60%">
+            <a href="" style="text-decoration: none;color: chocolate">
+                <br>
+                <h4>阿姨最爱的卡布奇洛</h4><br>
+                <div class="col-sm-8">
+                    <div>
+                        <img width="450" height="300" src="static/images/kbql.png" alt="卡布奇洛">
+                    </div>
+                </div>
+                <p>非~~~~~~~~~常好喝</p>
+                <br>
+            </a>
+            <hr style="color: black;height: 2px">
+        </div>
+        <div align="center" style="margin-left:450px;background-color: #e5e9ef;width: 60%">
+            <a href="" style="text-decoration: none;color: chocolate">
+                <h4>超好吃的饭</h4><br>
+                <div class="col-sm-8">
+                    <div>
+                        <img width="450" height="300" src="static/images/cook1.jfif" alt="cook">
+                    </div>
+                    <br>
+                </div>
+                <p>非~~~~~~~~~常好吃</p>
+            </a>
         </div>
     </div>
 </div>
 
-<div class="jumbotron text-center" style="margin-bottom:0">
-    <p>底部内容</p>
+<div class="jumbotron text-center bg-dark" style="margin-bottom:0">
+    <p style="color: #e5e9ef">底部内容</p>
 </div>
 </body>
 </html>

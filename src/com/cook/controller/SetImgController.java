@@ -1,6 +1,5 @@
 package com.cook.controller;
 
-import com.cook.model.Menu;
 import com.cook.service.MenuService;
 
 import javax.servlet.ServletException;
@@ -80,7 +79,6 @@ public class SetImgController extends HttpServlet {
 
         String img = savefilepath.replaceAll("\\\\", "/");
         MenuService.setImg(img,id);
-        Menu menu = MenuService.getMenu(id);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

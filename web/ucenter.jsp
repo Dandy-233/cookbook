@@ -30,17 +30,17 @@
                 <a class="nav-link" href="index1.jsp">首页 <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">排行</a>
+                <a class="nav-link" href="leaderboard.jsp">排行</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     分类
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">食材</a>
-                    <a class="dropdown-item" href="#">口味</a>
+                    <a class="dropdown-item" href="material.jsp">食材</a>
+                    <a class="dropdown-item" href="taste.jsp">口味</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">菜品</a>
+                    <a class="dropdown-item" href="all.jsp">所有</a>
                 </div>
             </li>
             <li class="nav-item drop-menu">
@@ -64,7 +64,7 @@
                     </a>
                     <div class="drop-content bg-light" style="width: 100px">
                         <a class="nav-link" target="_blank" href="ucenter.jsp" style="color: #533f03">个人中心</a>
-                        <a class="nav-link" target="_blank" href="mymenus.jsp" style="color: #533f03">我的菜谱</a>
+                        <a class="nav-link" target="_blank" href="mymenusTransition.jsp" style="color: #533f03">我的菜谱</a>
                         <a class="nav-link" target="_blank" href="mycollect.jsp" style="color: #533f03">我的收藏</a>
                         <div style="height: 1px"><hr color="orange"></div>
                         <a class="nav-link" href="exit" style="color: gray">退出登录</a>
