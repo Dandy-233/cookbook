@@ -23,7 +23,7 @@
 
 <div class="container" style="margin-top:30px">
     <div class="row">
-        <div class="col-sm-4" style="position: fixed">
+        <div class="col-sm-4" style="position: absolute">
             <h2 style="font-family: 楷体">美食の物语</h2>
             <img src="static/images/logo.png" alt="美食の物语" width="200">
             <p style="font-family: 楷体">大家最爱的美食社区</p>
@@ -63,4 +63,21 @@
 
 </c:import>
 </body>
+<script type="application/javascript">
+    //检验登录状态
+    $(function () {
+        $.ajax({
+            url:"${pageContext.request.contextPath}/keepLogin",
+            data:null,
+            dataType:"json",
+            success:function (d) {
+                if (d.code == 1){
+                    <c:if test="${empty user}">
+                    location.reload();
+                    </c:if>
+                }
+            }
+        });
+    })
+</script>
 </html>

@@ -18,11 +18,10 @@
     <script src="static/scripts/bootstrap.min.js"></script>
 </head>
 <body style="background-color: #F3EBF6">
-<div align="center">
-    <div class="container"><img width="800" src="static/images/loading.jpg" alt="loading"></div>
-    <br><br><br>
-    <div style="font-size: xx-large;margin-left: 400px">
-        <div class="loader font4">
+    <div class="container" align="center" style="text-align: center">
+        <img width="800" src="static/images/loading.jpg" alt="loading">
+        <br><br><br>
+        <div class="loader font4" style="font-size: xx-large;margin-left: 350px">
             <span>H</span>
             <span class="span2">E</span>
             <span class="span3">L</span>
@@ -43,13 +42,11 @@
             <span class="span5">F</span>
         </div>
     </div>
-</div>
-
 </body>
 <script type="application/javascript">
     //检验登录状态
     $(function () {
-        setTimeout("window.location.href='keepLogin'",1000);
+        setTimeout("window.location.href='index1.jsp'",1000);
     })
 </script>
 </html>

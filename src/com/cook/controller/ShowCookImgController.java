@@ -10,14 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.List;
 
 @WebServlet(name = "showCookImg",urlPatterns = "/showCookImg")
 public class ShowCookImgController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        int index = Integer.parseInt(request.getParameter("index"));
-        Menu menu = ((List<Menu>) session.getAttribute("menus")).get(index);
+        Menu menu = (Menu) session.getAttribute("menu");
         String imgPath = menu.getImg();
         if(null != imgPath && !"".equals(imgPath.trim())) {
             ImgUtil.showImage(response, imgPath, true);

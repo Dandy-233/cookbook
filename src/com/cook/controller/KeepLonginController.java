@@ -20,11 +20,11 @@ public class KeepLonginController extends HttpServlet {
                 User user = UserService.checkUser(username);
                 HttpSession session = request.getSession();
                 session.setAttribute("user",user);
-                response.sendRedirect(request.getContextPath()+"/index1.jsp");
+                response.getWriter().println("{\"code\":\"1\"}");
                 return;
             }
         }
-        response.sendRedirect(request.getContextPath()+"/index1.jsp");
+        response.getWriter().println("{\"code\":\"2\"}");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -123,15 +123,15 @@
                 <form id="form3" action="changePassword" method="post">
                     <div class="form-group">
                         <label for="exampleInputPassword1">请输入旧密码</label>
-                        <input type="password" name="oldpassword" class="form-control" id="exampleInputPassword1">
+                        <input required type="password" name="oldpassword" class="form-control" id="exampleInputPassword1">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword2">请输入新密码</label>
-                        <input type="password" name="newpassword" class="form-control" id="exampleInputPassword2">
+                        <input required type="password" name="newpassword" class="form-control" id="exampleInputPassword2">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword3">请再次输入新密码</label>
-                        <input type="password" name="re-newpassword" class="form-control" id="exampleInputPassword3">
+                        <input required type="password" name="re-newpassword" class="form-control" id="exampleInputPassword3">
                     </div>
                     <br>
                     <button type="submit" class="btn btn-primary">提交</button>
@@ -215,10 +215,10 @@
                 data:form.serialize(),
                 success:function () {
                     alert("修改成功");
-                    window.location.href="ucenter.jsp"
+                    location.reload();
                 },
                 error:function () {
-                    window.location.href="index.jsp";
+                    window.location.href="index1.jsp";
                 }
             })
         })
@@ -232,7 +232,7 @@
 
         $("#cancel-btn").click(function () {
             $("#confirm").css({"display":"none"});
-            window.location.href="ucenter.jsp"
+            location.reload();
         });
     });
 </script>
@@ -251,9 +251,20 @@
 <script>
     //判断是否处于登录状态
     $(function () {
-        <c:if test="${empty user}">
-        window.location.href="index.jsp";
-        </c:if>
+        $.ajax({
+            url:"${pageContext.request.contextPath}/keepLogin",
+            data:null,
+            dataType:"json",
+            success:function (d) {
+                if (d.code == 1){
+                    <c:if test="${empty user}">
+                    location.reload();
+                    </c:if>
+                }else {
+                    window.location.href="index1.jsp"
+                }
+            }
+        });
     });
 </script>
 <script>
@@ -262,7 +273,7 @@
             e.preventDefault();
             if (!($("#exampleInputPassword2").val() == ($("#exampleInputPassword3").val()))){
                 alert("两次输入密码不一致");
-                window.location.href="ucenter.jsp";
+                location.reload();
             }else {
                 var form = $(this);
                 $.ajax({
@@ -273,11 +284,11 @@
                     success:function (d) {
                         if (d.code == 0){
                             alert("旧密码输入有误");
-                            window.location.href="ucenter.jsp";
+                            location.reload();
                         }
                         if (d.code == 1){
                             alert("请不要输入相同的密码");
-                            window.location.href="ucenter.jsp";
+                            location.reload();
                         }
                         if (d.code == 2){
                             alert("修改密码成功,请重新登录");

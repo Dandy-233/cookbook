@@ -1,5 +1,8 @@
 <%@ page import="com.cook.model.Menu" %>
-<%@ page import="java.util.List" %><%--
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Enumeration" %>
+<%@ page import="java.util.TreeSet" %>
+<%@ page import="java.util.Collections" %><%--
   Created by IntelliJ IDEA.
   User: 李旦
   Date: 2019/12/27
@@ -19,35 +22,29 @@
     <script src="static/scripts/bootstrap.min.js"></script>
 </head>
 <body style="background-color: #F3EBF6">
-<%
-    HttpSession session1 = request.getSession();
-    List<Menu> list = (List<Menu>) session1.getAttribute("menus");
-    int index = Integer.parseInt(request.getParameter("index"));;
-    Menu menu = list.get(index);
-%>
 <c:import url="top.jsp">
 
 </c:import>
 <div class="container">
     <form id="form-cook" action="${pageContext.request.contextPath}/editCook" method="post" enctype="multipart/form-data">
-        <input accept="imageimage/jpeg,image/png" type="text" value="<%=menu.getId()%>" name="menuid" id="menuid" style="display: none">
+        <input accept="imageimage/jpeg,image/png" type="text" value="${menu.id}" name="menuid" id="menuid" style="display: none">
         <div class="form-group content-area">
             <hr style="color: chocolate">
             <div class="form-group" align="center">
-                <input accept="image/png,image/jpeg" required type="file" name="upimg" id="upimg" style="display: none">
-                <img id="img-btn" title="点击更改图片"  class="form-img" src="showCookImg?index=<%=index%>" alt="edit">
+                <input accept="image/png,image/jpeg" type="file" name="upimg" id="upimg" style="display: none">
+                <img id="img-btn" title="点击更改图片" class="form-img" src="showCookImg?" alt="edit">
                 <img class="form-img" id="demo">
             </div>
             <div class="form-group">
-                <input value="<%=menu.getTitle()%>" required id="title" name="title" type="text" class="form-control" placeholder="描述一下你的美食吧(o゜▽゜)o☆">
+                <input value="${menu.title}" required id="title" name="title" type="text" class="form-control" placeholder="描述一下你的美食吧(o゜▽゜)o☆">
             </div>
             <br>
             <div class="form-group">
-                <textarea id="material" name="material" type="text" class="form-control" placeholder="用了哪些食材の很重要喔"><%=menu.getMaterial()%></textarea>
+                <textarea id="material" name="material" type="text" class="form-control" placeholder="用了哪些食材の很重要喔">${menu.material}</textarea>
             </div>
             <br>
             <div class="form-group">
-                <textarea required id="description" name="description" type="text" rows="8" class="form-control" placeholder="告诉我它的做法吧~~\(^o^)/~"><%=menu.getDescription()%></textarea>
+                <textarea required id="description" name="description" type="text" rows="8" class="form-control" placeholder="告诉我它的做法吧~~\(^o^)/~">${menu.description}</textarea>
             </div>
             <br>
             <hr style="color: chocolate">
@@ -90,7 +87,7 @@
                         success:function (d) {
                             if (d.code == 1){
                                 alert("保存成功");
-                                window.location.href="mymenusTransition.jsp";
+                                window.location.href="mymenus.jsp";
                             }
                         },
                         error:function () {
@@ -107,7 +104,7 @@
                         success:function (d) {
                             if (d.code == 1){
                                 alert("保存成功");
-                                window.location.href="mymenusTransition.jsp";
+                                window.location.href="mymenus.jsp";
                             }
                         },
                         error:function () {
@@ -139,9 +136,20 @@
 <script>
     //判断是否处于登录状态
     $(function () {
-        <c:if test="${empty user}">
-        window.location.href="index.jsp";
-        </c:if>
+        $.ajax({
+            url:"${pageContext.request.contextPath}/keepLogin",
+            data:null,
+            dataType:"json",
+            success:function (d) {
+                if (d.code == 1){
+                    <c:if test="${empty user}">
+                    location.reload();
+                    </c:if>
+                }else {
+                    window.location.href="index1.jsp"
+                }
+            }
+        });
     });
 </script>
 <script>
@@ -153,7 +161,7 @@
                 url:url,
                 data:param,
                 success:function () {
-                    window.location.href="mymenusTransition.jsp";
+                    window.location.href="mymenus.jsp";
                 }
             });
         }

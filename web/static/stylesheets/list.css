@@ -1,0 +1,24 @@
+.title{
+    color: black;
+}
+.title:hover{
+    color: black;
+}
+.author{
+    font-size: smaller;
+    color: chocolate;
+}
+.author:hover{
+    color: purple;
+}
+.allmes{
+    text-align: left;
+}
+.text-cook{
+    font-size: large;
+    margin-left: 200px;
+}
+.img-cook{
+    position: absolute;
+    padding-left: 20px;
+}

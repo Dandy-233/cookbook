@@ -50,7 +50,7 @@
             success:function (data) {
                 if (data.count == 0){
                     alert("用户名或密码错误");
-                    window.location.href="login.jsp"
+                    location.reload();
                 }else {
                     window.location.href="index1.jsp"
                 }

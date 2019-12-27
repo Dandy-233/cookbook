@@ -1,9 +1,7 @@
 package com.cook.controller;
 
 import com.cook.model.Menu;
-import com.cook.model.User;
-import com.cook.service.MenuService;
-import com.cook.service.UserService;
+import com.cook.util.ImgUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,23 +10,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "checkAllMenu",urlPatterns = "/checkAllMenu")
-public class CheckAllMenuController extends HttpServlet {
+@WebServlet(name = "showCook",urlPatterns = "/showCook")
+public class ShowCookController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
         HttpSession session = request.getSession();
-        List<Menu> menus = MenuService.checkAllMenu();
-        List<User> authors = new ArrayList<>();
-        for(Menu menu :menus){
-            User author = UserService.reUser(menu.getAuthor());
-            authors.add(author);
+        List<Menu> list = (List<Menu>) session.getAttribute("menus");
+        int index = Integer.parseInt(request.getParameter("index"));
+        Menu menu = list.get(index);
+        String imgPath = menu.getImg();
+        if(null != imgPath && !"".equals(imgPath.trim())) {
+            ImgUtil.showImage(response, imgPath, true);
         }
-        session.setAttribute("authors",authors);
-        session.setAttribute("menus",menus);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -24,4 +24,18 @@
 
 </c:import>
 </body>
+<script>
+    $.ajax({
+        url:"${pageContext.request.contextPath}/keepLogin",
+        data:null,
+        dataType:"json",
+        success:function (d) {
+            if (d.code == 1){
+                <c:if test="${empty user}">
+                location.reload();
+                </c:if>
+            }
+        }
+    });
+</script>
 </html>

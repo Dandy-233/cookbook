@@ -87,7 +87,7 @@
                             processData: false,
                             success:function () {
                                 alert("上传成功");
-                                window.location.href="mymenusTransition.jsp"
+                                window.location.href="mymenus.jsp"
                             }
                         })
                     }
@@ -119,9 +119,20 @@
 <script>
     //判断是否处于登录状态
     $(function () {
-        <c:if test="${empty user}">
-        window.location.href="index.jsp";
-        </c:if>
+        $.ajax({
+            url:"${pageContext.request.contextPath}/keepLogin",
+            data:null,
+            dataType:"json",
+            success:function (d) {
+                if (d.code == 1){
+                    <c:if test="${empty user}">
+                    location.reload();
+                    </c:if>
+                }else {
+                    window.location.href="index1.jsp"
+                }
+            }
+        });
     });
 </script>
 </html>

@@ -37,17 +37,19 @@
         <div align="center">
             <ul class="list-group list-group-flush">
                 <c:forEach var="menu" items="${menus}" varStatus="status">
-                    <hr>
                     <li class="list-group-item" title="点击查看详情">
-                        <a href="editMenu.jsp?index=${status.index}" target="_blank" style="text-decoration: none">
-                            <div style="background-color:#e5e9ef ">
-                                <img width="100px" height="100px" src="showCookImg?index=${status.index}" alt="封面">
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <span style="font-size: large;color: #5FB878">${menu.title}</span>
-                            </div>
-                        </a>
+                        <div style="text-align: left;padding-left: 200px;background-color:#e5e9ef">
+                            <a href="editMenu?index=${status.index}" target="_blank" style="text-decoration: none">
+                                <div>
+                                    <br>
+                                    <img width="150px" height="120px" src="showCook?index=${status.index}" alt="封面">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <span style="font-size: large;color: #5FB878">${menu.title}</span>
+                                    <br><br>
+                                </div>
+                            </a>
+                        </div>
                     </li>
-                    <hr>
                 </c:forEach>
             </ul>
         </div>
@@ -63,11 +65,31 @@
 </c:import>
 </body>
 <script>
-    //判断是否处于登录状态
     $(function () {
-        <c:if test="${empty user}">
-        window.location.href="index.jsp";
-        </c:if>
+        $.ajax({
+            url:"${pageContext.request.contextPath}/keepLogin",
+            data:null,
+            dataType:"json",
+            success:function (d) {
+                if (d.code == 1){
+                    <c:if test="${empty user}">
+                    location.reload();
+                    </c:if>
+
+                    $.ajax({
+                        url:"${pageContext.request.contextPath}/checkMenu",
+                        type:"post",
+                        success:function () {
+                            <c:if test="${empty menus}">
+                            location.reload();
+                            </c:if>
+                        }
+                    })
+                }else {
+                    window.location.href="index1.jsp"
+                }
+            }
+        });
     });
 </script>
 </html>
