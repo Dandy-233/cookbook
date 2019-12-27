@@ -38,7 +38,7 @@
                                 <div class="text-cook">
                                     <span class="title">${menu.title}</span><br><br><br>
                                     <a href="authorinformation.jsp" target="_blank" style="text-decoration: none">
-                                        <span class="author" title="查看个人资料">作者:${authors[status.index].name}</span>
+                                        <span class="author" title="查看个人资料">${authors[status.index].name}</span>
                                     </a>
                                 </div>
                             </div>

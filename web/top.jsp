@@ -86,4 +86,9 @@
     </div>
 </nav>
 </body>
+<script>
+    $(function () {
+        $("#navbarDropdown").click();
+    })
+</script>
 </html>
