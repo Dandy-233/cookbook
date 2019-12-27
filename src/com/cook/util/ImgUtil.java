@@ -8,7 +8,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 /**
- * @author 24367
+ * @author ¿Óµ©
  * @date 2019/12/26,4:18
  */
 public class ImgUtil {

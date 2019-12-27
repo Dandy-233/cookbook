@@ -1,7 +1,7 @@
 package com.cook.model;
 
 /**
- * @author 24367
+ * @author ¿Óµ©
  * @date 2019/12/26,16:16
  */
 public class Menu {
