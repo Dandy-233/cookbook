@@ -1,6 +1,7 @@
 package com.cook.controller;
 
 import com.cook.model.Menu;
+import com.cook.util.ImgUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,8 +12,8 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "editMenu",urlPatterns = "/editMenu")
-public class EditMenuController extends HttpServlet {
+@WebServlet(name = "showMyImg",urlPatterns = "/showMyImg")
+public class ShowMyImgController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
@@ -20,8 +21,10 @@ public class EditMenuController extends HttpServlet {
         List<Menu> list = (List<Menu>) session.getAttribute("mymenus");
         int index = Integer.parseInt(request.getParameter("index"));
         Menu menu = list.get(index);
-        session.setAttribute("mymenu",menu);
-        response.sendRedirect(request.getContextPath()+"/editMenu.jsp");
+        String imgPath = menu.getImg();
+        if(null != imgPath && !"".equals(imgPath.trim())) {
+            ImgUtil.showImage(response, imgPath, true);
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

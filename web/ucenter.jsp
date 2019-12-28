@@ -27,10 +27,10 @@
     <form id="form2" action="${pageContext.request.contextPath}/upload" method="post" enctype="multipart/form-data">
         <div class="container" align="center">
             <input name="img" id="setface" type="file" accept="image/png,image/jpeg" style="display: none">
-            <c:if test="${empty user}">
+            <c:if test="${empty user.facepath}">
                 <img title="点击修改头像" style="cursor: pointer" id="upimg" class="head" src="static/images/user.jfif" alt="user">
             </c:if>
-            <c:if test="${not empty user}">
+            <c:if test="${not empty user.facepath}">
                 <img title="点击修改头像" style="cursor: pointer" id="upimg" class="head" src="showImg" alt="user">
             </c:if>
             <img class="head" style="cursor: pointer" id="demo">

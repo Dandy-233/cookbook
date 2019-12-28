@@ -12,13 +12,13 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "showCook",urlPatterns = "/showCook")
-public class ShowCookController extends HttpServlet {
+@WebServlet(name = "showAllImg",urlPatterns = "/showAllImg")
+public class ShowAllImgController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
         HttpSession session = request.getSession();
-        List<Menu> list = (List<Menu>) session.getAttribute("menus");
+        List<Menu> list = (List<Menu>) session.getAttribute("allmenus");
         int index = Integer.parseInt(request.getParameter("index"));
         Menu menu = list.get(index);
         String imgPath = menu.getImg();

@@ -26,21 +26,22 @@
     <h1 style="text-align: center;color: darkorange">所有菜谱</h1><br><br>
     <div class="container" align="center">
         <ul class="list-group list-group-flush">
-            <c:forEach var="menu" items="${menus}" varStatus="status">
+            <c:forEach var="allmenu" items="${allmenus}" varStatus="status">
                 <li class="list-group-item">
                     <div class="allmes container btn-outline-light">
                         <br>
-                        <a title="查看菜谱信息" href="information.jsp?index=${status.index}" target="_blank" style="text-decoration: none">
-                            <div>
-                                <div class="img-cook" style="position: absolute">
-                                    <img width="150px" height="120px" src="showCook?index=${status.index}" alt="封面">
-                                </div>
-                                <div class="text-cook">
-                                    <span class="title">${menu.title}</span><br><br><br>
-                                    <a href="authorinformation.jsp" target="_blank" style="text-decoration: none">
-                                        <span class="author" title="查看个人资料">${authors[status.index].name}</span>
-                                    </a>
-                                </div>
+                        <a title="查看菜谱信息" href="allInformation?index=${status.index}" target="_blank" style="text-decoration: none">
+                            <div class="img-cook" style="position: absolute">
+                                <img width="150px" height="120px" src="showAllImg?index=${status.index}" alt="封面">
+                            </div>
+                            <div class="text-cook">
+                                <span class="title">${allmenu.title}</span><br><br><br>
+                                <a href="allAuthorInformation?index=${status.index}" target="_blank" style="text-decoration: none">
+                                    <span class="author" title="查看美食家资料">${allauthors[status.index].name}</span>
+                                </a>
+                                <a>
+                                    <span style="color: black;font-size: smaller;margin-left: 50px">收藏数：${allcounts[status.index]}</span>
+                                </a>
                             </div>
                         </a>
                         <br><br>
@@ -76,7 +77,13 @@
             type:"post",
             data:null,
             success:function () {
-                <c:if test="${empty menus}">
+                <c:if test="${empty allmenus}">
+                location.reload();
+                </c:if>
+                <c:if test="${empty allcounts}">
+                location.reload();
+                </c:if>
+                <c:if test="${empty allauthors}">
                 location.reload();
                 </c:if>
             }

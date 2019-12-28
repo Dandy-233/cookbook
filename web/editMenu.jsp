@@ -27,24 +27,24 @@
 </c:import>
 <div class="container">
     <form id="form-cook" action="${pageContext.request.contextPath}/editCook" method="post" enctype="multipart/form-data">
-        <input accept="imageimage/jpeg,image/png" type="text" value="${menu.id}" name="menuid" id="menuid" style="display: none">
+        <input accept="imageimage/jpeg,image/png" type="text" value="${mymenu.id}" name="menuid" id="menuid" style="display: none">
         <div class="form-group content-area">
             <hr style="color: chocolate">
             <div class="form-group" align="center">
                 <input accept="image/png,image/jpeg" type="file" name="upimg" id="upimg" style="display: none">
-                <img id="img-btn" title="点击更改图片" class="form-img" src="showCookImg?" alt="edit">
+                <img id="img-btn" title="点击更改图片" class="form-img" src="showCookImg" alt="edit">
                 <img class="form-img" id="demo">
             </div>
             <div class="form-group">
-                <input value="${menu.title}" required id="title" name="title" type="text" class="form-control" placeholder="描述一下你的美食吧(o゜▽゜)o☆">
+                <input value="${mymenu.title}" required id="title" name="title" type="text" class="form-control" placeholder="描述一下你的美食吧(o゜▽゜)o☆">
             </div>
             <br>
             <div class="form-group">
-                <textarea id="material" name="material" type="text" class="form-control" placeholder="用了哪些食材の很重要喔">${menu.material}</textarea>
+                <textarea id="material" name="material" type="text" rows="6" class="form-control" placeholder="用了哪些食材の很重要喔">${mymenu.material}</textarea>
             </div>
             <br>
             <div class="form-group">
-                <textarea required id="description" name="description" type="text" rows="8" class="form-control" placeholder="告诉我它的做法吧~~\(^o^)/~">${menu.description}</textarea>
+                <textarea required id="description" name="description" type="text" rows="20" class="form-control" placeholder="告诉我它的做法吧~~\(^o^)/~">${mymenu.description}</textarea>
             </div>
             <br>
             <hr style="color: chocolate">
@@ -73,44 +73,29 @@
             data.append("upimg",fileinput);
             var form = $(this);
             $.ajax({
-                url:"${pageContext.request.contextPath}/setImg",
-                type:"post",
-                data:data,
-                contentType:false,
-                processData: false,
-                success:function () {
-                    $.ajax({
-                        url:form.attr("action"),
-                        type:form.attr("method"),
-                        data:form.serialize(),
-                        dataType:"json",
-                        success:function (d) {
-                            if (d.code == 1){
-                                alert("保存成功");
-                                window.location.href="mymenus.jsp";
-                            }
-                        },
-                        error:function () {
-                            alert("错误")
+                url:form.attr("action"),
+                type:form.attr("method"),
+                data:form.serialize(),
+                dataType:"json",
+                success:function (d) {
+                    if (d.code == 1){
+                        if (fileinput!=null){
+                            $.ajax({
+                                url:"${pageContext.request.contextPath}/setImg",
+                                type:"post",
+                                data:data,
+                                contentType:false,
+                                processData: false,
+                                success:function () {
+                                    alert("保存成功");
+                                    window.location.href="mymenus.jsp";
+                                }
+                            });
+                        }else {
+                            alert("保存成功");
+                            window.location.href="mymenus.jsp";
                         }
-                    });
-                },
-                error:function () {
-                    $.ajax({
-                        url:form.attr("action"),
-                        type:form.attr("method"),
-                        data:form.serialize(),
-                        dataType:"json",
-                        success:function (d) {
-                            if (d.code == 1){
-                                alert("保存成功");
-                                window.location.href="mymenus.jsp";
-                            }
-                        },
-                        error:function () {
-                            alert("错误")
-                        }
-                    });
+                    }
                 }
             });
         })
@@ -146,10 +131,14 @@
                     location.reload();
                     </c:if>
                 }else {
-                    window.location.href="index1.jsp"
+                    window.location.href="index1.jsp";
                 }
             }
         });
+
+        <c:if test="${empty mymenu}">
+        window.location.href="index1.jsp";
+        </c:if>
     });
 </script>
 <script>

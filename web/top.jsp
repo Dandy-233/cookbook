@@ -29,7 +29,7 @@
                 <a class="nav-link" href="index1.jsp">首页 <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="leaderboard.jsp">排行</a>
+                <a class="nav-link" href="checkLeaderMenu">排行</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" style="cursor: pointer" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -62,11 +62,11 @@
                         </c:if>
                     </a>
                     <div class="drop-content bg-light" style="width: 100px">
-                        <a class="nav-link" target="_blank" href="ucenter.jsp" style="color: #533f03">个人中心</a>
-                        <a class="nav-link" target="_blank" href="mymenus.jsp" style="color: #533f03">我的菜谱</a>
-                        <a class="nav-link" target="_blank" href="mycollect.jsp" style="color: #533f03">我的收藏</a>
+                        <a class="nav-link" target="_blank" href="ucenter.jsp" style="color: #533f03;text-align: center">个人中心</a>
+                        <a class="nav-link" target="_blank" href="mymenus.jsp" style="color: #533f03;text-align: center">我的菜谱</a>
+                        <a class="nav-link" target="_blank" href="mycollect.jsp" style="color: #533f03;text-align: center">我的收藏</a>
                         <div style="height: 1px"><hr color="orange"></div>
-                        <a class="nav-link" href="exit" style="color: gray">退出登录</a>
+                        <a class="nav-link" href="exit" style="color: gray;text-align: center">退出登录</a>
                     </div>
                 </li>
             </c:if>

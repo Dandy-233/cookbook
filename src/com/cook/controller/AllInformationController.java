@@ -11,17 +11,17 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "editMenu",urlPatterns = "/editMenu")
-public class EditMenuController extends HttpServlet {
+@WebServlet(name = "allInformation",urlPatterns = "/allInformation")
+public class AllInformationController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
         HttpSession session = request.getSession();
-        List<Menu> list = (List<Menu>) session.getAttribute("mymenus");
         int index = Integer.parseInt(request.getParameter("index"));
-        Menu menu = list.get(index);
-        session.setAttribute("mymenu",menu);
-        response.sendRedirect(request.getContextPath()+"/editMenu.jsp");
+        List<Menu> allmenus = (List<Menu>) session.getAttribute("allmenus");
+        Menu menu = allmenus.get(index);
+        session.setAttribute("menu",menu);
+        response.sendRedirect(request.getContextPath()+"/information.jsp");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

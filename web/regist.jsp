@@ -10,7 +10,6 @@
 <html>
 <head>
     <title>注册\(^o^)/~</title>
-    <link rel="stylesheet" href="static/stylesheets/ucenter.css">
     <link rel="stylesheet" href="static/stylesheets/bootstrap.min.css">
     <script src="static/scripts/jquery-3.4.1.min.js"></script>
     <script src="static/scripts/bootstrap.bundle.min.js"></script>
@@ -26,7 +25,7 @@
 <div class="main">
     <p class="sign" align="center">注册</p>
     <form class="form1" action="${pageContext.request.contextPath}/regist" method="post" autocomplete="off">
-        <input class="un " required type="text" align="center" placeholder="用户名" name="username" id="username">
+        <input class="un " required type="text" align="center" placeholder="用户名" name="username" id="username" autocomplete="off">
         <span id="error-username"></span>
         <input class="pass" required type="password" align="center" placeholder="密码" name="password" id="password">
         <span id="error-password"></span>

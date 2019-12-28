@@ -31,15 +31,15 @@
             <div class="form-group content-area">
                 <p class="content-title">上传你的美食</p><br>
                 <div class="form-group">
-                    <input required id="title" name="title" type="text" class="form-control" placeholder="描述一下你的美食吧(o゜▽゜)o☆">
+                    <input autocomplete="off" required id="title" name="title" type="text" class="form-control" placeholder="描述一下你的美食吧(o゜▽゜)o☆">
                 </div>
                 <br>
                 <div class="form-group">
-                    <textarea id="material" name="material" type="text" class="form-control" placeholder="用了哪些食材の很重要喔"></textarea>
+                    <textarea id="material" name="material" type="text" class="form-control" rows="6" placeholder="用了哪些食材の很重要喔"></textarea>
                 </div>
                 <br>
                 <div class="form-group">
-                    <textarea required id="description" name="description" type="text" rows="8" class="form-control" placeholder="告诉我它的做法吧~~\(^o^)/~"></textarea>
+                    <textarea required id="description" name="description" type="text" rows="20" class="form-control" placeholder="告诉我它的做法吧~~\(^o^)/~"></textarea>
                 </div>
                 <br>
                 <div class="form-group" align="center">

@@ -15,7 +15,7 @@ import java.io.IOException;
 public class ShowCookImgController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        Menu menu = (Menu) session.getAttribute("menu");
+        Menu menu = (Menu) session.getAttribute("mymenu");
         String imgPath = menu.getImg();
         if(null != imgPath && !"".equals(imgPath.trim())) {
             ImgUtil.showImage(response, imgPath, true);

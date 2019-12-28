@@ -9,7 +9,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>菜谱信息</title>
+    <title>${menu.title}</title>
     <link rel="stylesheet" href="static/stylesheets/drophover.css">
     <link rel="stylesheet" href="static/stylesheets/bootstrap.min.css">
     <script src="static/scripts/jquery-3.4.1.min.js"></script>
