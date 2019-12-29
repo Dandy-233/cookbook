@@ -59,4 +59,19 @@ public class CollectDao {
         String sql = "delete from collect where user_id=? and menu_id=?";
         jt.update(sql,userid,menuid);
     }
+
+    public List<Collect> getMyCollects(int userid) {
+        JdbcTemplate jt = new JdbcTemplate(DBUtil.getDataSource());
+        String sql = "select * from collect where user_id=?";
+        List<Collect> list = jt.query(sql, new RowMapper<Collect>() {
+            @Override
+            public Collect mapRow(ResultSet resultSet, int i) throws SQLException {
+                Collect collect = new Collect();
+                collect.setMenuid(resultSet.getInt("menu_id"));
+                collect.setUserid(resultSet.getInt("user_id"));
+                return collect;
+            }
+        }, userid);
+        return list;
+    }
 }

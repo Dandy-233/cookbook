@@ -65,6 +65,7 @@
         </div>
     </c:if>
 </div>
+<br><br>
 <c:import url="bottom.jsp">
 
 </c:import>

@@ -21,7 +21,7 @@
 <c:import url="top.jsp">
 
 </c:import>
-<div>
+<div class="container">
     <br><br>
     <h1 style="text-align: center;color: darkorange">所有菜谱</h1><br><br>
     <div class="container" align="center">

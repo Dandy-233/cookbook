@@ -22,7 +22,7 @@
 
 </c:import>
 
-<div>
+<div class="container">
     <br><br>
     <h1 style="text-align: center;color: darkorange">菜谱排行</h1><br><br>
     <div class="container" align="center">

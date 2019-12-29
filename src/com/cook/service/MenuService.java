@@ -36,4 +36,8 @@ public class MenuService {
     public static List<Menu> checkAllMenu() {
         return menuDao.checkAllMenu();
     }
+
+    public static Menu checkMenu(int menuid) {
+        return menuDao.checkMenu(menuid);
+    }
 }

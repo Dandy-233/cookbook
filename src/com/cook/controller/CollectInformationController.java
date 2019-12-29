@@ -16,18 +16,18 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * 通过所有菜谱获取菜谱信息
+ * 通过收藏夹获取菜谱信息
  */
-@WebServlet(name = "allInformation",urlPatterns = "/allInformation")
-public class AllInformationController extends HttpServlet {
+@WebServlet(name = "collectInformation",urlPatterns = "/collectInformation")
+public class CollectInformationController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
         HttpSession session = request.getSession();
         int index = Integer.parseInt(request.getParameter("index"));
-        List<Menu> allmenus = (List<Menu>) session.getAttribute("allmenus");
+        List<Menu> collectmenus = (List<Menu>) session.getAttribute("collectmenus");
         User user = (User) session.getAttribute("user");
-        Menu menu = allmenus.get(index);
+        Menu menu = collectmenus.get(index);
         Collect collect = null;
         if (user!=null){
             collect = CollectService.getCollect(user.getId(),menu.getId());

@@ -83,4 +83,27 @@ public class MenuDao {
         });
         return list;
     }
+
+    public Menu checkMenu(int menuid) {
+        JdbcTemplate jt = new JdbcTemplate(DBUtil.getDataSource());
+        String sql = "select * from menu where menu_id=?";
+        List<Menu> list = jt.query(sql, new RowMapper<Menu>() {
+            @Override
+            public Menu mapRow(ResultSet resultSet, int i) throws SQLException {
+                Menu menu = new Menu();
+                menu.setId(resultSet.getInt("menu_id"));
+                menu.setTitle(resultSet.getString("title"));
+                menu.setMaterial(resultSet.getString("material"));
+                menu.setDescription(resultSet.getString("description"));
+                menu.setImg(resultSet.getString("img"));
+                menu.setAuthor(resultSet.getInt("author_id"));
+                return menu;
+            }
+        }, menuid);
+        if (list.size()>0){
+            return list.get(0);
+        }else {
+            return null;
+        }
+    }
 }
