@@ -28,4 +28,35 @@ public class CollectDao {
         },id);
         return collects.size();
     }
+
+    public void addCollect(int userid, int menuid) {
+        JdbcTemplate jt = new JdbcTemplate(DBUtil.getDataSource());
+        String sql = "insert into collect values(?,?)";
+        jt.update(sql,userid,menuid);
+    }
+
+    public Collect getCollect(int userid, int menuid) {
+        JdbcTemplate jt = new JdbcTemplate(DBUtil.getDataSource());
+        String sql = "select * from collect where user_id=? and menu_id=?";
+        List<Collect> list = jt.query(sql, new RowMapper<Collect>() {
+            @Override
+            public Collect mapRow(ResultSet resultSet, int i) throws SQLException {
+                Collect collect = new Collect();
+                collect.setMenuid(resultSet.getInt("menu_id"));
+                collect.setUserid(resultSet.getInt("user_id"));
+                return collect;
+            }
+        }, userid, menuid);
+        if (list.size()>0){
+            return list.get(0);
+        }else {
+            return null;
+        }
+    }
+
+    public void unCollect(int userid, int menuid) {
+        JdbcTemplate jt = new JdbcTemplate(DBUtil.getDataSource());
+        String sql = "delete from collect where user_id=? and menu_id=?";
+        jt.update(sql,userid,menuid);
+    }
 }

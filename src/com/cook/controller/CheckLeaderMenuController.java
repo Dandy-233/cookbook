@@ -15,6 +15,9 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * 获取菜谱排行列表（根据收藏数）
+ */
 @WebServlet(name = "checkLeaderMenu",urlPatterns = "/checkLeaderMenu")
 public class CheckLeaderMenuController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

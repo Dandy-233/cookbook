@@ -18,10 +18,11 @@
     <script src="static/scripts/bootstrap.min.js"></script>
 </head>
 <body style="background-color: #F3EBF6">
+<br><br>
     <div class="container" align="center" style="text-align: center">
-        <img width="800" src="static/images/loading.jpg" alt="loading">
+        <img width="900" src="static/images/loading.jpg" alt="loading">
         <br><br><br>
-        <div class="loader font4" style="font-size: xx-large;margin-left: 350px">
+        <div class="loader font4" style="font-size: xx-large;margin-left: 300px">
             <span>H</span>
             <span class="span2">E</span>
             <span class="span3">L</span>

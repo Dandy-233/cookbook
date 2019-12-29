@@ -17,6 +17,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * 获取所有菜谱列表
+ */
 @WebServlet(name = "checkAllMenu",urlPatterns = "/checkAllMenu")
 public class CheckAllMenuController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

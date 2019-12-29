@@ -13,6 +13,9 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * É¾³ý²ËÆ×
+ */
 @WebServlet(name = "deleteMenu",urlPatterns = "/deleteMenu")
 public class DeleteMenuController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

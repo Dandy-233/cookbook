@@ -17,7 +17,7 @@
     <script src="static/scripts/bootstrap.bundle.min.js"></script>
     <script src="static/scripts/bootstrap.min.js"></script>
 </head>
-<body>
+<body style="background-color: #F3EBF6">
 <c:import url="top.jsp">
 
 </c:import>

@@ -1,6 +1,10 @@
 package com.cook.controller;
 
+import com.cook.model.Collect;
 import com.cook.model.Menu;
+import com.cook.model.User;
+import com.cook.service.CollectService;
+import com.cook.service.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,7 +23,17 @@ public class AllInformationController extends HttpServlet {
         HttpSession session = request.getSession();
         int index = Integer.parseInt(request.getParameter("index"));
         List<Menu> allmenus = (List<Menu>) session.getAttribute("allmenus");
+        User user = (User) session.getAttribute("user");
         Menu menu = allmenus.get(index);
+        Collect collect = null;
+        if (user!=null){
+            collect = CollectService.getCollect(user.getId(),menu.getId());
+        }
+        session.setAttribute("collect",collect);
+        User author = UserService.reUser(menu.getAuthor());
+        int count = CollectService.getCount(menu.getId());
+        session.setAttribute("author",author);
+        session.setAttribute("count",count);
         session.setAttribute("menu",menu);
         response.sendRedirect(request.getContextPath()+"/information.jsp");
     }

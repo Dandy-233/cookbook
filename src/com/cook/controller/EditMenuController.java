@@ -11,6 +11,9 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * 编辑菜谱页面获取菜谱信息
+ */
 @WebServlet(name = "editMenu",urlPatterns = "/editMenu")
 public class EditMenuController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

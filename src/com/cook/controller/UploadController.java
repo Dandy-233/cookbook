@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.*;
 
+/**
+ * ÉÏ´«Í·Ïñ
+ */
 @WebServlet(name = "upload",urlPatterns = "/upload")
 public class UploadController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

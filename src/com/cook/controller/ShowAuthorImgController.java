@@ -1,6 +1,6 @@
 package com.cook.controller;
 
-import com.cook.model.Menu;
+import com.cook.model.User;
 import com.cook.util.ImgUtil;
 
 import javax.servlet.ServletException;
@@ -12,14 +12,16 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- * 编辑菜谱信息里获取菜谱图片
+ * 显示菜谱作者的头像
  */
-@WebServlet(name = "showCookImg",urlPatterns = "/showCookImg")
-public class ShowCookImgController extends HttpServlet {
+@WebServlet(name = "showAuthorImg",urlPatterns = "/showAuthorImg")
+public class ShowAuthorImgController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
+        response.setContentType("text/html;charset=utf-8");
         HttpSession session = request.getSession();
-        Menu menu = (Menu) session.getAttribute("mymenu");
-        String imgPath = menu.getImg();
+        User author = (User) session.getAttribute("author");
+        String imgPath = author.getFacepath();
         if(null != imgPath && !"".equals(imgPath.trim())) {
             ImgUtil.showImage(response, imgPath, true);
         }

@@ -8,6 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 
+/**
+ * ¼ì²éµÇÂ¼×´Ì¬
+ */
 @WebServlet(name = "keepLongin",urlPatterns = "/keepLogin")
 public class KeepLonginController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

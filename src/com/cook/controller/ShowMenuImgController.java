@@ -10,15 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 /**
- * 编辑菜谱信息里获取菜谱图片
+ * 菜谱信息里显示菜谱的图片
  */
-@WebServlet(name = "showCookImg",urlPatterns = "/showCookImg")
-public class ShowCookImgController extends HttpServlet {
+@WebServlet(name = "showMenuImg",urlPatterns = "/showMenuImg")
+public class ShowMenuImgController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
+        response.setContentType("text/html;charset=utf-8");
         HttpSession session = request.getSession();
-        Menu menu = (Menu) session.getAttribute("mymenu");
+        List<Menu> list = (List<Menu>) session.getAttribute("menus");
+        int index = Integer.parseInt(request.getParameter("index"));
+        Menu menu = list.get(index);
         String imgPath = menu.getImg();
         if(null != imgPath && !"".equals(imgPath.trim())) {
             ImgUtil.showImage(response, imgPath, true);

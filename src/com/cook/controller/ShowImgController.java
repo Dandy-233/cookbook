@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+/**
+ * 菜谱作者资料里获取菜谱图片
+ */
 @WebServlet(name = "showImg",urlPatterns = "/showImg")
 public class ShowImgController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

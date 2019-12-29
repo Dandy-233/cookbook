@@ -3,6 +3,7 @@ package com.cook.model;
 /**
  * @author ¿Óµ©
  * @date 2019/12/28,17:55
+ * collect±Ì
  */
 public class Collect {
     private int userid;

@@ -1,9 +1,10 @@
 package com.cook.service;
 
 import com.cook.dao.CollectDao;
+import com.cook.model.Collect;
 
 /**
- * @author 24367
+ * @author ¿Óµ©
  * @date 2019/12/28,16:19
  */
 public class CollectService {
@@ -11,5 +12,17 @@ public class CollectService {
 
     public static int getCount(int id) {
         return collectDao.getCount(id);
+    }
+
+    public static void addCollect(int userid, int menuid) {
+        collectDao.addCollect(userid,menuid);
+    }
+
+    public static Collect getCollect(int userid, int menuid) {
+        return collectDao.getCollect(userid,menuid);
+    }
+
+    public static void unCollect(int userid, int menuid) {
+        collectDao.unCollect(userid,menuid);
     }
 }

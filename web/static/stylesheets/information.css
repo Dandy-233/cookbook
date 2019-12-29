@@ -1,0 +1,16 @@
+.image{
+    width: 200px;
+    height: 160px;
+}
+.title{
+    color: #533f03;
+    font-size: xx-large;
+}
+.material{
+    color: #1b1e21;
+    font-size: medium;
+}
+.description{
+    color: #1b1e21;
+    font-size: medium;
+}

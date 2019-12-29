@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.*;
 
+/**
+ * ÉèÖÃ²ËÆ×µÄÍ¼Æ¬
+ */
 @WebServlet(name = "setImg",urlPatterns = "/setImg")
 public class SetImgController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

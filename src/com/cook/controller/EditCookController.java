@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+/**
+ * ±à¼­²ËÆ×ÐÅÏ¢
+ */
 @WebServlet(name = "editCook",urlPatterns = "/editCook")
 public class EditCookController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

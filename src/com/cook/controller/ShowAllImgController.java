@@ -12,6 +12,9 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * 获取所有菜谱里的菜谱图片
+ */
 @WebServlet(name = "showAllImg",urlPatterns = "/showAllImg")
 public class ShowAllImgController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

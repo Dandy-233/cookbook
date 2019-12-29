@@ -17,7 +17,7 @@
     <script src="static/scripts/bootstrap.bundle.min.js"></script>
     <script src="static/scripts/bootstrap.min.js"></script>
 </head>
-<body>
+<body style="background-color: #F3EBF6">
 <c:import url="top.jsp">
 
 </c:import>
@@ -32,6 +32,9 @@
                     <div class="allmes container btn-outline-light">
                         <br>
                         <a title="查看菜谱信息" href="leaderInformation?index=${status.index}" target="_blank" style="text-decoration: none">
+                            <div style="position: absolute;font-size: xx-large;color: #5FB878;margin-left: 850px;margin-top: 35px">
+                                ${status.count}
+                            </div>
                             <div class="img-cook" style="position: absolute">
                                 <img width="150px" height="120px" src="showLeaderImg?index=${status.index}" alt="封面">
                             </div>

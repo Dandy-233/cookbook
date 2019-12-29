@@ -55,7 +55,7 @@
                 <li class="nav-item drop-menu">
                     <a class="nav-link hover-btn" tabindex="-1" aria-disabled="true">
                         <c:if test="${empty user.facepath}">
-                            <img src="static/images/user.jfif" alt="user" height="30" style="position: relative;border-radius: 50%">
+                            <img src="static/images/default.png" alt="user" height="30" style="position: relative;border-radius: 50%">
                         </c:if>
                         <c:if test="${not empty user.facepath}">
                             <img src="showImg" alt="user" height="30" style="position: relative;border-radius: 50%">

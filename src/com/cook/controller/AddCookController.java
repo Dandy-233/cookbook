@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+/**
+ * Ìí¼Ó²ËÆ×
+ */
 @WebServlet(name = "addCook",urlPatterns = "/addCook")
 public class AddCookController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

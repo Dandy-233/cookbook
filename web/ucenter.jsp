@@ -28,7 +28,7 @@
         <div class="container" align="center">
             <input name="img" id="setface" type="file" accept="image/png,image/jpeg" style="display: none">
             <c:if test="${empty user.facepath}">
-                <img title="点击修改头像" style="cursor: pointer" id="upimg" class="head" src="static/images/user.jfif" alt="user">
+                <img title="点击修改头像" style="cursor: pointer" id="upimg" class="head" src="static/images/default.png" alt="user">
             </c:if>
             <c:if test="${not empty user.facepath}">
                 <img title="点击修改头像" style="cursor: pointer" id="upimg" class="head" src="showImg" alt="user">

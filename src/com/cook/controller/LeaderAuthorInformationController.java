@@ -1,6 +1,9 @@
 package com.cook.controller;
 
+import com.cook.model.Menu;
 import com.cook.model.User;
+import com.cook.service.CollectService;
+import com.cook.service.MenuService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,8 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 通过排行榜获取菜谱作者信息
+ */
 @WebServlet(name = "leaderAuthorInformation",urlPatterns = "/leaderAuthorInformation")
 public class LeaderAuthorInformationController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -20,7 +27,14 @@ public class LeaderAuthorInformationController extends HttpServlet {
         int index = Integer.parseInt(request.getParameter("index"));
         List<User> leaderauthors = (List<User>) session.getAttribute("leaderauthors");
         User author = leaderauthors.get(index);
+        List<Menu> menus = MenuService.listMenu(author.getId());
+        List<Integer> counts = new ArrayList<>();
+        for (Menu menu:menus){
+            counts.add(CollectService.getCount(menu.getId()));
+        }
+        session.setAttribute("counts",counts);
         session.setAttribute("author",author);
+        session.setAttribute("menus",menus);
         response.sendRedirect(request.getContextPath()+"/authorinformation.jsp");
     }
 
