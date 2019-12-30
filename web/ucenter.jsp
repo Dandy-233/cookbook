@@ -273,7 +273,6 @@
             e.preventDefault();
             if (!($("#exampleInputPassword2").val() == ($("#exampleInputPassword3").val()))){
                 alert("两次输入密码不一致");
-                location.reload();
             }else {
                 var form = $(this);
                 $.ajax({
@@ -284,11 +283,9 @@
                     success:function (d) {
                         if (d.code == 0){
                             alert("旧密码输入有误");
-                            location.reload();
                         }
                         if (d.code == 1){
                             alert("请不要输入相同的密码");
-                            location.reload();
                         }
                         if (d.code == 2){
                             alert("修改密码成功,请重新登录");
