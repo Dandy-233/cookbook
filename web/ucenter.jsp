@@ -214,7 +214,7 @@
                 url:form.attr("action"),
                 data:form.serialize(),
                 success:function () {
-                    alert("修改成功");
+                    alert("更新资料成功");
                     location.reload();
                 },
                 error:function () {
